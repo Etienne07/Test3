@@ -1,7 +1,7 @@
 package jeux_des_nombresV2;
 import java.util.Arrays;
 import java.util.Scanner;
-// debut class mainClassV2
+// debut class mainClassV2// ok chef
 public class mainClasseV2 {
 	public static void main(String[] args)
 	{
