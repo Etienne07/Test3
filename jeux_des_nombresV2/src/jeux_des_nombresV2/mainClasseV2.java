@@ -1,7 +1,6 @@
 package jeux_des_nombresV2;
 import java.util.Arrays;
 import java.util.Scanner;
-// debut class mainClassV2// ok chef
 public class mainClasseV2 {
 	public static void main(String[] args)
 	{
@@ -65,7 +64,7 @@ public class mainClasseV2 {
 			    Famille [] liste_fam_pb1 = new Famille[1];
 			    liste_fam_pb1[0] = fam_pb1;
 			    Foret for_pb1 = new Foret(liste_fam_pb1);
-			    
+			    			    
 			    //Initialisation de Valeurs_trouvees
 			    int [] liste_val_pb1 = new int[1];
 			    liste_val_pb1[0] = arbre_pb1.valeur;
@@ -81,9 +80,12 @@ public class mainClasseV2 {
 			    int etape = 1;
 			    while (taille <= generateur_pb1)	    
 			    {  	
-			    	//Creation de la nouvelle famille
-			    	Arbre [] init = {};
-			    	Famille fam_nvlle_etape_pb1 = new Famille(etape, init);
+			    //Méthode 1 - Creation de la nouvelle famille
+			    	//Arbre [] init = {};
+			    	//Famille fam_nvlle_etape_pb1 = new Famille(etape, init);
+			    //Méthode 2 - Creation de la nouvelle famille:
+			    	Famille fam_nvlle_etape_pb1 = new Famille();
+			    	fam_nvlle_etape_pb1.nb_operations=etape;
 			    	
 			    	//Preparation de la boucle principale
 			    	int i = 0;
@@ -197,17 +199,24 @@ public class mainClasseV2 {
 			    liste_val_pb2[0] = arbre_pb2.valeur;
 			    Valeurs_trouvees val_trouvees_pb2 = new Valeurs_trouvees(liste_val_pb2);
 			    
-			    //Initialisation de Solutions
-			    Arbre [] liste_solution_pb2 = new Arbre[1];
-			    liste_solution_pb2[0]=arbre_pb2;
-			    Solutions sol_pb2 = new Solutions(liste_solution_pb2);
+			//Méthode 1 - Initialisation de Solutions
+			    //Arbre [] liste_solution_pb2 = new Arbre[1];
+			    //liste_solution_pb2[0]=arbre_pb2;
+			    //Solutions sol_pb2 = new Solutions(liste_solution_pb2);
+			//Méthode 2 - Initialisation de Solutions
+			    Solutions sol_pb2 = new Solutions();
+			    
 		//Debut de la boucle principale de calculs des arbres
 			    int etape = 1;
 			    while (etape <= nombre_d_ope)	    
 			    {  	
-			    	//Creation de la nouvelle famille
-			    	Arbre [] init = {};
-			    	Famille fam_nvlle_etape_pb2 = new Famille(etape, init);
+			    
+			    //Méthode 1 - Creation de la nouvelle famille
+			    	//Arbre [] init = {};
+			    	//Famille fam_nvlle_etape_pb2 = new Famille(etape, init);
+			    //Méthode 2 - Creation de la nouvelle famille
+			    	Famille fam_nvlle_etape_pb2 = new Famille();
+			    	fam_nvlle_etape_pb2.nb_operations = etape; 
 			    	
 			    	//Preparation de la boucle principale
 			    	int i = 0;
@@ -291,265 +300,212 @@ public class mainClasseV2 {
 		//Une fois la solution trouvées, on la trie, puis on afficher le résultat
 			    //sol_pb2=sol_pb2.tri_solutions();
 			    
-			    if (nombre_d_ope != 0)
-			    {
+			 //Test si sol_pb2 est mal initialisée
+			    //if (nombre_d_ope != 0)
+			    //{
 			    	
-			    	Solutions solution = new Solutions();
-			    	Arbre [] sol = new Arbre[sol_pb2.liste_solution.length-1];
-			    	solution.liste_solution=sol;
-			    	for (int i=0; i<sol_pb2.liste_solution.length-1;i++)
-			    	{
-			    		solution.liste_solution[i]=sol_pb2.liste_solution[i+1];
-			    	}
-			    	sol_pb2 = solution;
-			    }
+			    //	Solutions solution = new Solutions();
+			    //	Arbre [] sol = new Arbre[sol_pb2.liste_solution.length-1];
+			    //	solution.liste_solution=sol;
+			    //	for (int i=0; i<sol_pb2.liste_solution.length-1;i++)
+			    //	{
+			    //		solution.liste_solution[i]=sol_pb2.liste_solution[i+1];
+			    //	}
+			    //	sol_pb2 = solution;
+			    //}
+			    
 			    System.out.println(sol_pb2.lire_solution_finale());
 	    	}
 	    
 	    if (mode == '3')
 	    {   	
-	    	System.out.println("Combien d'entiers générateurs utiliserez-vous ?");
+	    
+	    //Ici il faudrait un bouton : "Ajouter un entier" et un "Lancer le jeu" -> à voir pour l'interface graphique
+	    	
+	    	//Méthode 1 - Initialisation de Solutions
+		    //Arbre [] liste_solution_pb3 = new Arbre[1];
+		    //liste_solution_pb3[0]=arbre_pb3;
+		    //Solutions sol_pb3 = new Solutions(liste_solution_pb3);
+		    //int taille = sol_pb3.liste_solution.length;
+		 //Méthode 2 - Initialisation de Solutions
+		    Solutions sol_pb3 = new Solutions();
 		    
-		    int nb_entier = sc.nextInt();
+	    	//On initialise la liste de générateurs
+	    	int nb_entier = 0;
+	    	int [] liste_generateurs = {};
+	    	Famille fam_pb3 = new Famille();
+	    	fam_pb3.nb_operations = 0;
+	    	
+	    	System.out.println("Quel nombre voulez-vous trouver ?");
+		    
+		    int nb_trouve = sc.nextInt();
 		    //Pensez à vider la ligne lue
 		    sc.nextLine();
-		    
-		    int [] liste_generateurs = new int[nb_entier];
-		    int nb = 0;		   
-		    
-	    		while (nb < nb_entier)
-	    		{
-	    			System.out.println("Entrer un nouveau générateur");
-				    
-				    int generateur_pb3 = sc.nextInt();
-				    //Pensez à vider la ligne lue
-				    sc.nextLine();
-				    
-				    liste_generateurs[nb] = generateur_pb3;
-				    				    
-				    Nombre arbre_pb3 = new Nombre();
-				    arbre_pb3.valeur = generateur_pb3;
-				    int [] liste_gen_pb3 = {generateur_pb3};
-				    arbre_pb3.liste_generateurs = liste_gen_pb3;
-				    
-				    nb+=1;
-	    		}
-	    		
+	    	
+	    	//Je remplace ici le bouton "Ajouter un entier" par -1 en entrée
+	    	while (nb_entier != (1) )
+	    	{
+	    		System.out.println("Ajouter un entier");
+			    
+			    nb_entier = sc.nextInt();
+			    //Pensez à vider la ligne lue
+			    sc.nextLine();
+			    
+			    //On ajoute l'entier à la liste
+			    int [] liste_doublon = new int[liste_generateurs.length+1];
+			    for (int i=0; i<liste_generateurs.length;i++) 
+			    {
+			    	liste_doublon[i] = liste_generateurs[i];
+			    }
+			    liste_doublon[liste_generateurs.length] = nb_entier;
+			    liste_generateurs = liste_doublon;
+			    
+			    //On ajoute l'arbre correspondant à la famille initiale
+			    Nombre arbre_pb3 = new Nombre();
+			    arbre_pb3.valeur = nb_entier;
+			    int [] liste_gen_pb3 = {nb_entier};
+			    arbre_pb3.liste_generateurs = liste_gen_pb3;
+			    fam_pb3.ajouter_arbre_famille(arbre_pb3);
+			    
+			    if (nb_trouve == nb_entier)
+			    {
+			    	sol_pb3.liste_solution[0] = arbre_pb3;
+			    }
+	    	}
+	    	
 		  //Initialisation du pb 3
 	    		
-
-			    //Initialisation de l'arbre générateur :
-	    		Nombre arbre_pb3 = new Nombre();//Eviter l'erreur
-			    arbre_pb3.valeur = 1;//Eviter l'erreur
+		  //Initialisation de l'arbre générateur :
+    		//Nombre arbre_pb3 = new Nombre();//Eviter l'erreur
+		    //arbre_pb3.valeur = 1;//Eviter l'erreur
+    		
+		    //Initialisation de Famille
+		    //Arbre [] liste_arbre_pb3 = new Arbre[1];
+		    //liste_arbre_pb3[0] = arbre_pb3;
+		    //Famille fam_pb3 = new Famille(0,liste_arbre_pb3);
+		    
+		    //Initialisation de Foret
+		    Famille [] liste_fam_pb3 = new Famille[1];
+		    liste_fam_pb3[0] = fam_pb3;
+		    Foret for_pb3 = new Foret(liste_fam_pb3);
+		    
+		    //Initialisation de Valeurs_trouvees
+		    //int [] liste_val_pb3 = new int[1];
+		    //liste_val_pb3[0] = arbre_pb3.valeur;
+		    Valeurs_trouvees val_trouvees_pb3 = new Valeurs_trouvees();
+		    
+		    //Debut de la boucle principale de calculs des arbres
+		    int etape = 1;
+		    
+	    	//La condition d'arrêt portera sur la solution : dès qu'il y en a une on la renvoie
+		    int taille = 0;
+	    	if (sol_pb3.liste_solution != null)
+	    	{	    		
+	    		taille = sol_pb3.liste_solution.length;
+	    	}
+	    	
+	    	while (taille == 0);
+	    	{
 	    		
-			    //Initialisation de Famille
-			    Arbre [] liste_arbre_pb3 = new Arbre[1];
-			    liste_arbre_pb3[0] = arbre_pb3;
-			    Famille fam_pb3 = new Famille(0,liste_arbre_pb3);
-			    
-			    //Initialisation de Foret
-			    Famille [] liste_fam_pb3 = new Famille[1];
-			    liste_fam_pb3[0] = fam_pb3;
-			    Foret for_pb3 = new Foret(liste_fam_pb3);
-			    
-			    //Initialisation de Valeurs_trouvees
-			    int [] liste_val_pb3 = new int[1];
-			    liste_val_pb3[0] = arbre_pb3.valeur;
-			    Valeurs_trouvees val_trouvees_pb3 = new Valeurs_trouvees(liste_val_pb3);
-			    
-			    //Initialisation de Solutions
-			    Arbre [] liste_solution_pb3 = new Arbre[1];
-			    liste_solution_pb3[0]=arbre_pb3;
-			    Solutions sol_pb3 = new Solutions(liste_solution_pb3);
-			    int taille = sol_pb3.liste_solution.length;
-			    
-		//Debut de la boucle principale de calculs des arbres
-			    int etape = 1;
-			    while (taille <= 1)//Eviter l'erreur	    
-			    {  	
-			    	//Creation de la nouvelle famille
-			    	Arbre [] init = {};
-			    	Famille fam_nvlle_etape_pb3 = new Famille(etape, init);
-			    	
-			    	//Preparation de la boucle principale
-			    	int i = 0;
-			    	int j = etape-1;
-			    	while (i<=j)//Permet de donner les couples de familles à combiner par des opérations		
+				    
+			  //Creation de la nouvelle famille
+		    	//Arbre [] init = {};
+		    	Famille fam_nvlle_etape_pb3 = new Famille();
+		    	fam_nvlle_etape_pb3.nb_operations = etape;
+	    		
+	    		//Preparation de la boucle principale
+		    	int i = 0;
+		    	int j = etape-1;
+		    	
+	    		while (i<=j)//Permet de donner les couples de familles à combiner par des opérations		
+		    	{
+		    		//Pacours des familles complémentaires
+		    		
+			    	//Simplification de la notation
+			    	int taillei = for_pb3.liste_famille[i].liste_famille_arbre.length;
+			   		int taillej = for_pb3.liste_famille[j].liste_famille_arbre.length;
+			   		Famille famillei = for_pb3.liste_famille[i];
+			   		Famille famillej = for_pb3.liste_famille[j];
+			   		
+		    		//i1 et j1 vont permettre de parcourrir les familles i et j retenues
+		    		for (int i1 = 0; i1 < taillei; i1++)
+		    		{			    			
+		    			for (int j1 = 0; j1 < taillej; j1++)
 			    		{
-			    	
-			    	//Pacours des familles complémentaires
-			    		
-			    		//Simplification de la notation
-			    		int taillei = for_pb3.liste_famille[i].liste_famille_arbre.length;
-			    		int taillej = for_pb3.liste_famille[j].liste_famille_arbre.length;
-			    		Famille famillei = for_pb3.liste_famille[i];
-			    		Famille famillej = for_pb3.liste_famille[j];
-			    		
-			    		//i1 et j1 vont permettre de parcourrir les familles i et j retenues
-			    		for (int i1 = 0; i1 < taillei; i1++)
-			    		{
-			    			for (int j1 = 0; j1 < taillej; j1++)
-			    			{
-			    			//On effectue les 4 opérations			    				
-			    				Addition add_pb3 = new Addition();
-			    				add_pb3.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
-			    					
-			    				Soustraction sous_pb3 = new Soustraction();
-		    					sous_pb3.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
-		    					
-		    					Multiplication mult_pb3 = new Multiplication();
-		    					mult_pb3.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
-		    						
-		    					Division div_pb3 = new Division();
-		    					div_pb3.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
-			    				
-		    					//Regroupement des résultats dans la liste "nouv_arbres"
-	    						Arbre [] nouv_arbres_pb3 = {add_pb3,sous_pb3,mult_pb3,div_pb3};
+		    		//On vérifie que les deux arbres n'ont pas de générateurs communs 
+		    			boolean verification = famillei.liste_famille_arbre[i1].compare_generateurs(famillej.liste_famille_arbre[j1]);;
+			   			if (verification)
+			   			{
+			   			//On effectue les 4 opérations			    				
+			   				Addition add_pb3 = new Addition();
+			   				add_pb3.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
+			   					
+		    				Soustraction sous_pb3 = new Soustraction();
+	    					sous_pb3.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
+	    					
+	    					Multiplication mult_pb3 = new Multiplication();
+	    					mult_pb3.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
 	    						
-	    						//Ajout ou non des nouveaux arbres dans la solution
-	    						for (Arbre arbres_pb3 : nouv_arbres_pb3)
-	    						{
-	    							//Regarde si la valeur n'a pas déjà été trouvée dans le passé
-	    							if (!val_trouvees_pb3.is_in(arbres_pb3.valeur))
-	    							{
-	    								val_trouvees_pb3=val_trouvees_pb3.ajouter_valeur(arbres_pb3.valeur);
-	    								
-	    								//Regarde si la valeur est solution
-	    								//if (arbres_pb3.valeur <= generateur_pb3)
-	    								if (arbres_pb3.valeur <= 1)//Eviter l'erreur
-	    									sol_pb3=sol_pb3.ajouter_arbre_solution(arbres_pb3);//si oui, on l'ajoute à la liste des solutions
-	    							}
-	    							
-	    							//Met à jour la famille pour les valeurs retenues
-	    							fam_nvlle_etape_pb3=fam_nvlle_etape_pb3.ajouter_arbre_famille(arbres_pb3);
-	    						}	
-	    					}		
-		    			}
-			    		
-			    		//Passe aux familles restantes
-			    		i+=1;
-			    		j-=1;
-			    	}
-			    	//Ajoute la famille trouvée à cette étape et passe à l'étape suivante 		    	
-			    	for_pb3=for_pb3.ajouter_famille(fam_nvlle_etape_pb3);
-			    	etape += 1;
-			    	
-			    	//Met à jour la condition de fermeture de la boucle cas
-			    	taille = sol_pb3.liste_solution.length;
-			    }
-			    
-		//Une fois la solution trouvées, on la trie, puis on afficher le résultat
-			    //sol_pb3=sol_pb3.tri_solutions();
-			    System.out.println(sol_pb3.lire_solution_finale());
-	      }
+	    					Division div_pb3 = new Division();
+	    					div_pb3.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
+		    				
+	    					//Regroupement des résultats dans la liste "nouv_arbres"
+							Arbre [] nouv_arbres_pb3 = {add_pb3,sous_pb3,mult_pb3,div_pb3};
+							
+							//Ajout ou non des nouveaux arbres dans la solution
+							for (Arbre arbres_pb3 : nouv_arbres_pb3)
+							{
+								//Regarde si la valeur n'a pas déjà été trouvée dans le passé
+								if (!val_trouvees_pb3.is_in(arbres_pb3.valeur))
+								{
+									val_trouvees_pb3=val_trouvees_pb3.ajouter_valeur(arbres_pb3.valeur);
+									
+									//Regarde si la valeur est solution
+									if (arbres_pb3.valeur == nb_trouve)
+										sol_pb3=sol_pb3.ajouter_arbre_solution(arbres_pb3);//si oui, on l'ajoute à la liste des solutions
+								}
+								
+								//Met à jour la famille pour les valeurs retenues
+								fam_nvlle_etape_pb3=fam_nvlle_etape_pb3.ajouter_arbre_famille(arbres_pb3);
+							}
+			   			}
+					}		
+	    		}
+		    		
+		    	//Passe aux familles restantes
+		   		i+=1;
+		   		j-=1;		
+		    		
+		   	}
+	    	//Ajoute la famille trouvée à cette étape et passe à l'étape suivante 		    	
+	    	for_pb3=for_pb3.ajouter_famille(fam_nvlle_etape_pb3);
+	   		etape += 1;
+	   	
+	   		//Met à jour la condition de fermeture de la boucle cas
+	   		taille = sol_pb3.liste_solution.length;
+    	}
+		    
+    //Une fois la solution trouvées, on la trie, puis on afficher le résultat
+    	//sol_pb3=sol_pb3.tri_solutions();
+    	System.out.println(sol_pb3.lire_solution_finale());
+    }    	
+     
+    //On invite l'utilisateur à recommencer ou à quitter
+
+    do{       
+    	System.out.println("Souhaitez-vous rejouer ? (O/N)");
+    	reponse = sc.nextLine().charAt(0);
+      		
+    }while(reponse != 'O' && reponse != 'N');
 	
-	     
+    //Cf la boucle "Rejouer"
+	}while(reponse == 'O');  
+     		    
+    System.out.println("Au revoir !");
+    sc.close();
+  
+    	//Fin de programme
+    
+   }	
+}	
 
-	      //On invite l'utilisateur à recommencer ou à quitter
-
-	      do{       
-
-	        System.out.println("Souhaitez-vous rejouer ? (O/N)");
-	        reponse = sc.nextLine().charAt(0);
-	       
-
-	      }while(reponse != 'O' && reponse != 'N');
-
-	    
-
-	    }while(reponse == 'O');
-
-	    
-
-	  System.out.println("Au revoir !");
-	  sc.close();
-	  
-
-	  //Fin de programme
-
-	  
-
-	    
-
-	 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		Nombre sept = new Nombre();
-		sept.valeur = 7;
-		Nombre un = new Nombre();
-		un.valeur = 1;
-		Soustraction arbre0 = new Soustraction();
-		arbre0.arbre1 = sept;
-		arbre0.arbre2 = un;
-		arbre0.valeur = 6;
-		Addition arbre00 = new Addition();
-		arbre00.arbre1 = sept;
-		arbre00.arbre2 = un;
-		arbre00.valeur = 8;
-		//System.out.println(arbre0.toString());
-		//System.out.println(un.lire_solution());
-		//System.out.println(sept.lire_solution());
-		//System.out.println(arbre0.lire_solution());
-		Soustraction arbre3 = new Soustraction();
-		Addition arbre4 = new Addition();
-		arbre4 = arbre00;
-		arbre3 = arbre0;
-		//arbre4 = arbre00.operation(arbre0);
-		//arbre3 = arbre0.operation(arbre0);
-		//System.out.println(arbre3.arbre1 + "\n Suivi de : \n " + arbre3.arbre2 + "\n Puis de sa valeur : \n " + arbre3.valeur);
-		//System.out.println(arbre3);
-		//System.out.println(arbre3.lire_solution());
-		
-		Arbre [] liste = new Arbre[3];
-		liste[0]=un;
-		liste[1]=sept;
-		liste[2]=arbre0;
-		Arbre [] liste1 = new Arbre[1];
-		liste1[0]=arbre3;		
-		Arbre [] liste2 = new Arbre[4];
-		Solutions nouvelle_liste = new Solutions(liste);
-		Solutions nouvelle_liste1 = new Solutions(liste1);
-		Solutions nouvelle_liste2 = new Solutions();
-		nouvelle_liste2 = nouvelle_liste.ajouter_arbre_solution(arbre4);
-		//nouvelle_liste.ajouter_arbre_solution(un);
-		//nouvelle_liste.ajouter_arbre_solution(arbre0);
-		//nouvelle_liste.ajouter_arbre_solution(arbre3);
-		//nouvelle_liste.ajouter_arbre_solution(arbre4);
-		//Arbre [] liste = new Arbre[5];
-		//System.out.println(nouvelle_liste2.liste_solution[0].toString());
-		//System.out.println(nouvelle_liste2.liste_solution[1].toString());
-		//System.out.println(nouvelle_liste2.liste_solution[2].toString());
-		//System.out.println(nouvelle_liste2.liste_solution[3].toString());
-		//System.out.println(nouvelle_liste2.lire_solution_finale());
-		
-		Famille fam1 = new Famille(0,liste);
-		Famille fam2 = new Famille(1,liste1);
-		fam1.liste_famille_arbre[0]=sept;
-		fam1.liste_famille_arbre[0]=un;
-		fam1= fam1.ajouter_arbre_famille(un);
-		fam1 = fam1.ajouter_arbre_famille(sept);
-		Famille famtest []= new Famille[2];
-		famtest[0]=fam1;
-		famtest[1]=fam2;
-		fam2 = fam2.ajouter_arbre_famille(arbre0);
-		Foret for1 = new Foret(famtest);
-		for1.ajouter_famille(fam2);
-		//System.out.println(nouvelle_liste2.liste_solution[0].toString());
-		Famille nouvelle_liste3 = new Famille(0,liste);
-		Famille nouvelle_liste4 = new Famille(1,liste1);
-		Famille nouvelle_liste5 = new Famille();
-		//System.out.println(nouvelle_liste3.liste_famille_arbre[0].toString());
-		//System.out.println(nouvelle_liste3.liste_famille_arbre[1].toString());
-		
-		
-	}
-	
-}

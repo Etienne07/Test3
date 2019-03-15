@@ -8,7 +8,7 @@ public class Famille
 		public Famille ()
 		{
 			nb_operations = 0;
-			Arbre liste_famille_arbre[] = {};
+			Arbre liste_famille_arbre[] = new Arbre[0];
 		}
 		
 		public Famille (int nb_ope, Arbre [] liste_famille)
@@ -19,6 +19,11 @@ public class Famille
 
 		public Famille ajouter_arbre_famille(Arbre arbre)
 		{
+			if (this.liste_famille_arbre == null)
+				{
+				Arbre [] init = new Arbre[0];
+				this.liste_famille_arbre = init;
+				}
 			int taille = this.liste_famille_arbre.length;
 			Arbre [] nouv_liste = new Arbre [taille +1];
 			if (taille == 0)

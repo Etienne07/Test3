@@ -6,7 +6,7 @@ public class Foret
 	
 	public Foret ()
 	{
-		Famille liste_famille[] = {};
+		Famille liste_famille[] = new Famille[0];
 	}
 	
 	public Foret (Famille [] family)
@@ -16,6 +16,11 @@ public class Foret
 
 	public Foret ajouter_famille(Famille family)
 	{
+		if (this.liste_famille == null)
+		{
+			Famille [] init = new Famille[0];
+			this.liste_famille = init;
+		}
 		int taille = this.liste_famille.length;
 		Famille [] nouv_liste = new Famille [taille +1];
 		if (taille == 0)

@@ -6,7 +6,7 @@ public class Solutions
 	
 	public Solutions ()
 	{
-		Arbre liste_solutions[] = {};
+		Arbre liste_solutions[] = new Arbre[0];
 	}
 	
 	public Solutions (Arbre [] nouvelle_liste_arbre)
@@ -14,13 +14,13 @@ public class Solutions
 		liste_solution = nouvelle_liste_arbre;
 	}
 	
-	//public String toString()
-	//{
-		//return();
-	//}
-	
 	public Solutions ajouter_arbre_solution(Arbre arbre)
 	{
+		if (this.liste_solution == null)
+		{
+			Arbre [] init = new Arbre[0];
+			this.liste_solution = init;
+		}
 		int taille = this.liste_solution.length;
 		Arbre [] nouv_liste = new Arbre [taille +1];
 		if (taille == 0)
