@@ -18,26 +18,23 @@ public class Famille
 		}
 
 		public Famille ajouter_arbre_famille(Arbre arbre)
-		{
+		{			
+			Arbre [] nouv_liste = new Arbre [1];
 			if (this.liste_famille_arbre == null)
-				{
-				Arbre [] init = new Arbre[0];
-				this.liste_famille_arbre = init;
-				}
-			int taille = this.liste_famille_arbre.length;
-			Arbre [] nouv_liste = new Arbre [taille +1];
-			if (taille == 0)
 			{
 				nouv_liste[0]=arbre;
 			}
 			else
 			{
+				int taille = this.liste_famille_arbre.length;
+				nouv_liste = new Arbre [taille +1];
 				for (int i=0; i<taille;i++)
 				{
 					nouv_liste[i]=this.liste_famille_arbre[i];
 				}
 				nouv_liste[taille]=arbre;
 			}
+			
 			Famille solut = new Famille(this.nb_operations,nouv_liste);
 			return(solut);
 		}

@@ -57,7 +57,18 @@ public class Division extends Arbre
 			this.arbre2=test;
 			this.valeur=1;
 			System.out.println("erreur : division par 0");
-			}	
+			}
+		
+		int [] liste_gen = new int[arbre1.liste_generateurs.length + arbre2.liste_generateurs.length];
+		for (int i = 0;i < arbre1.liste_generateurs.length;i++)
+		{
+			liste_gen[i]= arbre1.liste_generateurs[i];
+		}
+		for (int j = 0;j < arbre2.liste_generateurs.length;j++)
+		{
+			liste_gen[j+arbre1.liste_generateurs.length]= arbre2.liste_generateurs[j];
+		}
+		this.liste_generateurs = liste_gen;
 	}
 
 	public String lire_solution()

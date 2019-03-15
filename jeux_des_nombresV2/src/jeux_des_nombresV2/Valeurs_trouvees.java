@@ -42,6 +42,12 @@ public class Valeurs_trouvees
 	
 	public boolean is_in(int val)
 	{
+		if (this.liste_valeurs == null)
+		{
+			int [] init = new int[0];
+			this.liste_valeurs = init;
+		}
+		
 		int marqueur = 0;
 		for (int elem1 : this.liste_valeurs)
 		{
