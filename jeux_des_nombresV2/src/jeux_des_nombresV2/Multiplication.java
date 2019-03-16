@@ -51,9 +51,9 @@ public class Multiplication extends Arbre
 		{
 			if (!(this.arbre1 instanceof Multiplication) && (this.arbre2 instanceof Multiplication))
 		    	solution = "(" + this.arbre1.lire_solution() + ")*" + this.arbre2.lire_solution();
-		    if ((this.arbre1 instanceof Multiplication) && !(this.arbre2 instanceof Multiplication))
+		    if (this.arbre1 instanceof Multiplication && !(this.arbre2 instanceof Multiplication))
 		    	solution = this.arbre1.lire_solution() + "*(" + this.arbre2.lire_solution() + ")";
-		    if((this.arbre1 instanceof Multiplication) && (this.arbre2 instanceof Multiplication))
+		    if(this.arbre1 instanceof Multiplication && this.arbre2 instanceof Multiplication)
 		    	solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 		    else
 		    	solution = "(" + this.arbre1.lire_solution() + ")*(" + this.arbre2.lire_solution() + ")";
@@ -72,7 +72,7 @@ public class Multiplication extends Arbre
 		    else
 		    	solution = "(" + this.arbre1.lire_solution() + ")*" + this.arbre2.lire_solution();
 		}
-		else
+		if (this.arbre1 instanceof Nombre && this.arbre2 instanceof Nombre)
 			solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 	    return(solution);
     } 
