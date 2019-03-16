@@ -58,19 +58,20 @@ public class Multiplication extends Arbre
 		}
 		if (this.arbre1 instanceof Nombre && !(this.arbre2 instanceof Nombre))
 		{
-			if (!(this.arbre1 instanceof Multiplication) && (this.arbre2 instanceof Multiplication))
+			if (this.arbre2 instanceof Multiplication || this.arbre2 instanceof Division)
 		    	solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 		    else
 		    	solution = this.arbre1.lire_solution() + "*(" + this.arbre2.lire_solution() + ")";
 		}
 		if (!(this.arbre1 instanceof Nombre) && this.arbre2 instanceof Nombre)
 		{
-			if ((this.arbre1 instanceof Multiplication) && !(this.arbre2 instanceof Multiplication))
-		    	solution = this.arbre1.lire_solution() + "*(" + this.arbre2.lire_solution() + ")";
+			if (this.arbre1 instanceof Multiplication)
+		    	solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 		    else
 		    	solution = "(" + this.arbre1.lire_solution() + ")*" + this.arbre2.lire_solution();
 		}
-	    
+		else
+			solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 	    return(solution);
     } 
 	
