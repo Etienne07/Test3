@@ -55,27 +55,38 @@ public class Solutions
 
 	public void tri_solutions()
 	{
-		int taille = this.liste_solution.length;
-		if (taille != 0)
+		if (this.liste_solution == null)
 		{
-			Arbre liste_doublon [] = new Arbre[taille];
-			int i = 0;
-			int j = 0;
-			Arbre debut = new Arbre();
-			while (i<taille)
+			Arbre [] init = new Arbre[0];
+			this.liste_solution = init;
+		}
+		else
+		{
+			int taille = this.liste_solution.length;
+			if (taille != 0)
 			{
-				j=i;
-				debut = this.liste_solution[i];
-				while (j<taille)
+				Arbre liste_doublon [] = new Arbre[taille];
+				int i = 0;
+				int j = 0;
+				Arbre debut = new Arbre();
+				while (i<taille)
 				{
-					
+					j=i+1;
 					debut = this.liste_solution[i];
-					
-					j+=1;
+					while (j<taille)
+					{
+						if (debut.valeur > this.liste_solution[j].valeur);
+						{
+							debut = this.liste_solution[j];
+						}
+						j+=1;
+					}
+					liste_doublon[i]=debut;
+					System.out.println(debut.lire_solution());
+					i+=1;
 				}
-			i+=1;
+				this.liste_solution = liste_doublon;
 			}
-		
 		}
 	}
 

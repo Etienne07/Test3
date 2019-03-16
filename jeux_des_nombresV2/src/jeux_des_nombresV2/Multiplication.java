@@ -53,6 +53,8 @@ public class Multiplication extends Arbre
 		    	solution = "(" + this.arbre1.lire_solution() + ")*" + this.arbre2.lire_solution();
 		    if ((this.arbre1 instanceof Multiplication) && !(this.arbre2 instanceof Multiplication))
 		    	solution = this.arbre1.lire_solution() + "*(" + this.arbre2.lire_solution() + ")";
+		    if((this.arbre1 instanceof Multiplication) && (this.arbre2 instanceof Multiplication))
+		    	solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 		    else
 		    	solution = "(" + this.arbre1.lire_solution() + ")*(" + this.arbre2.lire_solution() + ")";
 		}

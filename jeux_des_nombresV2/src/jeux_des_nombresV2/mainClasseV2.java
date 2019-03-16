@@ -12,19 +12,7 @@ public class mainClasseV2 {
 	    //Mise en placec du menu principal
 	    System.out.println("JEUX DES NOMBRES");
 	    System.out.println("-------------------------------------------------");
-	    
-	    //TEST DIVISION
-	    int valeur1 = 2;
-	    int valeur2 = 4;
-		int nouvelle_valeur = valeur1 % valeur2;
-		if (nouvelle_valeur!=0)
-			System.out.println("Raté:" + valeur1 % valeur2);
-		else
-			System.out.println(String.valueOf(valeur1/valeur2));
-	    
-	    
-	    
-	    
+	    	      
 	    do{//Tant que reponse = O //boucle principale
 	    	
 	    	do{//Tant que reponse invalide
@@ -146,8 +134,8 @@ public class mainClasseV2 {
 	    						//Ajout ou non des nouveaux arbres dans la solution
 	    						for (Arbre arbres_pb1 : nouv_arbres_pb1)
 	    						{
-	    							//Regarde si la valeur n'a pas déjà été trouvée dans le passé
-	    							if (!val_trouvees_pb1.is_in(arbres_pb1.valeur))
+	    							//Regarde si la valeur n'a pas déjà été trouvée dans le passé, et si on ne dépasse pas la capacité du type "int"
+	    							if (!val_trouvees_pb1.is_in(arbres_pb1.valeur) && arbres_pb1.valeur>=0)
 	    							{
 	    								val_trouvees_pb1=val_trouvees_pb1.ajouter_valeur(arbres_pb1.valeur);
 	    								
@@ -175,7 +163,13 @@ public class mainClasseV2 {
 			    }
 			    
 		//Une fois la solution trouvées, on la trie, puis on afficher le résultat
-			    //sol_pb1=sol_pb1.tri_solutions();
+			    //sol_pb1.tri_solutions();
+			    
+			    //for (Arbre test : sol_pb1.liste_solution)
+			    //{
+			    //	System.out.println(String.valueOf(test.valeur));
+			    //	System.out.println(test.lire_solution());
+			    //}
 			    System.out.println(sol_pb1.lire_solution_finale());
 	    	}
 	    	
@@ -243,77 +237,69 @@ public class mainClasseV2 {
 			    	int i = 0;
 			    	int j = etape-1;
 			    	while (i<=j)//Permet de donner les couples de familles à combiner par des opérations		
-			    		{
-			    	
-			    	//Pacours des familles complémentaires
-			    		
+			   		{
+			   	
+			    		//Pacours des familles complémentaires
+		    
 			    		//Simplification de la notation
 			    		int taillei = for_pb2.liste_famille[i].liste_famille_arbre.length;
 			    		int taillej = for_pb2.liste_famille[j].liste_famille_arbre.length;
 			    		Famille famillei = for_pb2.liste_famille[i];
-			    		Famille famillej = for_pb2.liste_famille[j];
-			    		
-			    		//i1 et j1 vont permettre de parcourrir les familles i et j retenues
-			    		for (int i1 = 0; i1 < taillei; i1++)
-			    		{
-			    			for (int j1 = 0; j1 < taillej; j1++)
-			    			{
-			    			//On effectue les 4 opérations			    				
-			    				//if (etape == 1 || famillei.liste_famille_arbre[i1].valeur!=0)
-			    				//{
-			    					//if (etape == 1 || famillej.liste_famille_arbre[j1].valeur!=0)
-			    				if (famillei.liste_famille_arbre[i1].valeur!=0 && famillej.liste_famille_arbre[j1].valeur!=0)	
-			    					{
-			    						Addition add_pb2 = new Addition();
-					    				add_pb2.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
-					    					
-					    				Soustraction sous_pb2 = new Soustraction();
-				    					sous_pb2.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
+			   			Famille famillej = for_pb2.liste_famille[j];
+			   		
+			   			//i1 et j1 vont permettre de parcourrir les familles i et j retenues
+			   			for (int i1 = 0; i1 < taillei; i1++)
+			   			{
+			   				for (int j1 = 0; j1 < taillej; j1++)
+			   				{
+			   					//On effectue les 4 opérations			    				
+			   					if (famillei.liste_famille_arbre[i1].valeur!=0 && famillej.liste_famille_arbre[j1].valeur!=0)	
+			   					{
+			   						Addition add_pb2 = new Addition();
+				    				add_pb2.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
 				    					
-				    					Multiplication mult_pb2 = new Multiplication();
-				    					mult_pb2.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
-				    						
-				    					//Regroupement des résultats dans la liste "nouv_arbres"
-										Arbre [] nouv_arbres_pb2 = {add_pb2,sous_pb2,mult_pb2};
-										
-										//Cas particulier de la division
-				    					if (famillei.liste_famille_arbre[i1].valeur!=0 && famillej.liste_famille_arbre[j1].valeur!=0)
-				    					{
-				    						if (famillei.liste_famille_arbre[i1].valeur % famillej.liste_famille_arbre[j1].valeur ==0 || famillej.liste_famille_arbre[j1].valeur % famillei.liste_famille_arbre[i1].valeur==0)
-				    						{
-				    							Division div_pb2 = new Division();
-				    							div_pb2.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
-					    						Arbre [] nouv_arbres_v2 = {add_pb2,sous_pb2,mult_pb2,div_pb2};
-					    						nouv_arbres_pb2 = nouv_arbres_v2;
-					    					}
-				    					}
+				    				Soustraction sous_pb2 = new Soustraction();
+			    					sous_pb2.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
+			    					
+			    					Multiplication mult_pb2 = new Multiplication();
+			    					mult_pb2.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
 			    						
-			    						//Ajout ou non des nouveaux arbres dans la solution
-			    						for (Arbre arbres_pb2 : nouv_arbres_pb2)
+			    					//Regroupement des résultats dans la liste "nouv_arbres"
+									Arbre [] nouv_arbres_pb2 = {add_pb2,sous_pb2,mult_pb2};
+										
+									//Cas particulier de la division
+				   					if (famillei.liste_famille_arbre[i1].valeur!=0 && famillej.liste_famille_arbre[j1].valeur!=0)
+				    				{
+				    					if (famillei.liste_famille_arbre[i1].valeur % famillej.liste_famille_arbre[j1].valeur ==0 || famillej.liste_famille_arbre[j1].valeur % famillei.liste_famille_arbre[i1].valeur==0)
+			    						{
+			    							Division div_pb2 = new Division();
+			    							div_pb2.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
+				    						Arbre [] nouv_arbres_v2 = {add_pb2,sous_pb2,mult_pb2,div_pb2};
+				    						nouv_arbres_pb2 = nouv_arbres_v2;
+					   					}
+			    					}
+			   						
+			    					//Ajout ou non des nouveaux arbres dans la solution
+			    					for (Arbre arbres_pb2 : nouv_arbres_pb2)
+			    					{
+			    						//Si on ne dépasse pas la capacité du type "int"
+			    						if (arbres_pb2.valeur >= 0)
 			    						{
 			    							//On rajoute ces valeurs à la famille en cours de remplissage
-			    							fam_nvlle_etape_pb2=fam_nvlle_etape_pb2.ajouter_arbre_famille(arbres_pb2);
-			    							
-			    							//On n'ajoute ces valeurs à la solution que si elles ont le bon nombre d'opération
-			    							if (nombre_d_ope == etape && arbres_pb2.valeur <= generateur_pb2)
-			    							{    								
-			    								//Et si on ne les a pas encore trouvées avant
-			    								if (!val_trouvees_pb2.is_in(arbres_pb2.valeur))
-			    								{
-				    								//if (sol_pb2.liste_solution.length == 1 && sol_pb2.liste_solution[0].valeur==generateur_pb2) 
-				    								//{
-				    								//	sol_pb2.liste_solution[0]=arbre_pb2;
-				    								//}
-				    								//else
-				    								//{
-				    								sol_pb2=sol_pb2.ajouter_arbre_solution(arbres_pb2);
-				    								//}
-				    								val_trouvees_pb2 = val_trouvees_pb2.ajouter_valeur(arbres_pb2.valeur);	
+				    						fam_nvlle_etape_pb2=fam_nvlle_etape_pb2.ajouter_arbre_famille(arbres_pb2);
 				    						
-			    								}
-			    							}
+				    						//On n'ajoute ces valeurs à la solution que si elles ont le bon nombre d'opération
+				   							if (nombre_d_ope == etape && arbres_pb2.valeur <= generateur_pb2)
+				   							{    								
+				   								//Et si on ne les a pas encore trouvées avant
+				   								if (!val_trouvees_pb2.is_in(arbres_pb2.valeur))
+				    							{
+					    							sol_pb2=sol_pb2.ajouter_arbre_solution(arbres_pb2);
+					    							val_trouvees_pb2 = val_trouvees_pb2.ajouter_valeur(arbres_pb2.valeur);	
+				    							}
+				    						}
 			    						}
-			    					//}
+			    					}
 			    				}
 	    					}		
 		    			}
@@ -345,11 +331,11 @@ public class mainClasseV2 {
 			    //}
 			    
 			    //TEST
-			    for (Arbre test : sol_pb2.liste_solution)
-			    {
-			    	System.out.println(test.valeur);
-			    	System.out.println(test.lire_solution());
-			    }
+			    //for (Arbre test : sol_pb2.liste_solution)
+			    //{
+			    //	System.out.println(test.valeur);
+			    //	System.out.println(test.lire_solution());
+			    //}
 			   	
 			    
 			    System.out.println(sol_pb2.lire_solution_finale());
@@ -357,18 +343,9 @@ public class mainClasseV2 {
 	    
 	    if (mode == '3')
 	    {   	
-	    
-	    //Ici il faudrait un bouton : "Ajouter un entier" et un "Lancer le jeu" -> à voir pour l'interface graphique
-	    	
 	    	
 	    //Initialisation du pb 3
 	    	
-	    	//Méthode 1 - Initialisation de Solutions
-		    //Arbre [] liste_solution_pb3 = new Arbre[1];
-		    //liste_solution_pb3[0]=arbre_pb3;
-		    //Solutions sol_pb3 = new Solutions(liste_solution_pb3);
-		    //int taille = sol_pb3.liste_solution.length;
-		 //Méthode 2 - Initialisation de Solutions
 		    Solutions sol_pb3 = new Solutions();
 		    
 		  //Initialisation de Valeurs_trouvees
@@ -385,7 +362,11 @@ public class mainClasseV2 {
 		    int nb_trouve = sc.nextInt();
 		    //Pensez à vider la ligne lue
 		    sc.nextLine();
-	    	
+	    
+		    
+
+		    //Ici il faudrait un bouton : "Ajouter un entier" et un "Lancer le jeu" -> à voir pour l'interface graphique
+		    
 	    	//Je remplace ici le bouton "Ajouter un entier" par 1 en entrée
 	    	while (nb_entier != -1 )
 	    	{
@@ -424,13 +405,6 @@ public class mainClasseV2 {
 			 		}
 			    }			    
 	    	}
-	    	
-	    	//for (int i=0; i<liste_generateurs.length;i++) 
-		    //{
-		    //	System.out.println(liste_generateurs[i]);
-		    //	System.out.println(fam_pb3.liste_famille_arbre.length);
-		    //	System.out.println(fam_pb3.liste_famille_arbre[i].lire_solution());
-		    //}
 		    
 		    //Initialisation de Foret
 		    Famille [] liste_fam_pb3 = new Famille[1];
@@ -507,8 +481,8 @@ public class mainClasseV2 {
 	    					//Ajout ou non des nouveaux arbres dans la solution
 							for (Arbre arbres_pb3 : nouv_arbres_pb3)
 							{
-								//Regarde si la valeur n'a pas déjà été trouvée dans le passé
-								if (!val_trouvees_pb3.is_in(arbres_pb3.valeur))
+								//Regarde si la valeur n'a pas déjà été trouvée dans le passé, et si on ne dépasse pas la capacité du type "int"
+								if (!val_trouvees_pb3.is_in(arbres_pb3.valeur) && arbres_pb3.valeur >= 0)
 								{
 									val_trouvees_pb3=val_trouvees_pb3.ajouter_valeur(arbres_pb3.valeur);
 									

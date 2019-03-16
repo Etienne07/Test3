@@ -48,9 +48,6 @@ public class Division extends Arbre
 		}
 		else
 			{
-				///Division test = new Division();
-				//return(test);
-			//!!!!!! que renvoyer si l'un des deux vaut 0 ?????
 			int [] test1 = {1};
 			Nombre test = new Nombre(1,test1);
 			this.arbre1=test;
