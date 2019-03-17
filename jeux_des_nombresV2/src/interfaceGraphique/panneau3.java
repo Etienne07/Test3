@@ -14,6 +14,9 @@ public class panneau3 extends JPanel {
 	g.setFont(font2);
     g.drawString("À partir de plusieurs générateurs, trouver un nombre cible avec un minimum d'opérations élémentaires et en utilisant",10,122);
     g.drawString("une seule fois chaque opérateur", 10, 142);
+    g.drawString("Entrez un nombre cible (entier positif) :", 10, 182); 
+    g.drawString("Entrez les générateurs (entiers positifs séparés par une virgule. Ex : 1, 3, 15, 27) :", 10, 292); 
+    
     
   }        
 
