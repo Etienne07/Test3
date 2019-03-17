@@ -5,8 +5,6 @@ import java.awt.Font;
 import javax.swing.JPanel;
 
 public class panneau extends JPanel {
-  private int posX = 0;
-  private int posY = 0;
 
   public void paintComponent(Graphics g){
 	Font font = new Font("Arial", Font.BOLD, 22);
