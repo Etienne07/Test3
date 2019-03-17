@@ -6,7 +6,7 @@ public class Solutions
 	
 	public Solutions ()
 	{
-		Arbre liste_solutions[] = {};
+		Arbre liste_solutions[] = new Arbre[0];
 	}
 	
 	public Solutions (Arbre [] nouvelle_liste_arbre)
@@ -14,13 +14,13 @@ public class Solutions
 		liste_solution = nouvelle_liste_arbre;
 	}
 	
-	//public String toString()
-	//{
-		//return();
-	//}
-	
 	public Solutions ajouter_arbre_solution(Arbre arbre)
 	{
+		if (this.liste_solution == null)
+		{
+			Arbre [] init = new Arbre[0];
+			this.liste_solution = init;
+		}
 		int taille = this.liste_solution.length;
 		Arbre [] nouv_liste = new Arbre [taille +1];
 		if (taille == 0)
@@ -55,27 +55,38 @@ public class Solutions
 
 	public void tri_solutions()
 	{
-		int taille = this.liste_solution.length;
-		if (taille != 0)
+		if (this.liste_solution == null)
 		{
-			Arbre liste_doublon [] = new Arbre[taille];
-			int i = 0;
-			int j = 0;
-			Arbre debut = new Arbre();
-			while (i<taille)
+			Arbre [] init = new Arbre[0];
+			this.liste_solution = init;
+		}
+		else
+		{
+			int taille = this.liste_solution.length;
+			if (taille != 0)
 			{
-				j=i;
-				debut = this.liste_solution[i];
-				while (j<taille)
+				Arbre liste_doublon [] = new Arbre[taille];
+				int i = 0;
+				int j = 0;
+				Arbre debut = new Arbre();
+				while (i<taille)
 				{
-					
+					j=i+1;
 					debut = this.liste_solution[i];
-					
-					j+=1;
+					while (j<taille)
+					{
+						if (debut.valeur > this.liste_solution[j].valeur);
+						{
+							debut = this.liste_solution[j];
+						}
+						j+=1;
+					}
+					liste_doublon[i]=debut;
+					System.out.println(debut.lire_solution());
+					i+=1;
 				}
-			i+=1;
+				this.liste_solution = liste_doublon;
 			}
-		
 		}
 	}
 

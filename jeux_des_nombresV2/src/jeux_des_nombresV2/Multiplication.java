@@ -31,6 +31,17 @@ public class Multiplication extends Arbre
 		int nouvelle_valeur = valeur1 * valeur2;
 		this.valeur = nouvelle_valeur;
 		//return(nouvel_arbre);
+		
+		int [] liste_gen = new int[arbre1.liste_generateurs.length + arbre2.liste_generateurs.length];
+		for (int i = 0;i < arbre1.liste_generateurs.length;i++)
+		{
+			liste_gen[i]= arbre1.liste_generateurs[i];
+		}
+		for (int j = 0;j < arbre2.liste_generateurs.length;j++)
+		{
+			liste_gen[j+arbre1.liste_generateurs.length]= arbre2.liste_generateurs[j];
+		}
+		this.liste_generateurs = liste_gen;
 	}
 
 	public String lire_solution()
@@ -40,26 +51,29 @@ public class Multiplication extends Arbre
 		{
 			if (!(this.arbre1 instanceof Multiplication) && (this.arbre2 instanceof Multiplication))
 		    	solution = "(" + this.arbre1.lire_solution() + ")*" + this.arbre2.lire_solution();
-		    if ((this.arbre1 instanceof Multiplication) && !(this.arbre2 instanceof Multiplication))
+		    if (this.arbre1 instanceof Multiplication && !(this.arbre2 instanceof Multiplication))
 		    	solution = this.arbre1.lire_solution() + "*(" + this.arbre2.lire_solution() + ")";
+		    if(this.arbre1 instanceof Multiplication && this.arbre2 instanceof Multiplication)
+		    	solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 		    else
 		    	solution = "(" + this.arbre1.lire_solution() + ")*(" + this.arbre2.lire_solution() + ")";
 		}
 		if (this.arbre1 instanceof Nombre && !(this.arbre2 instanceof Nombre))
 		{
-			if (!(this.arbre1 instanceof Multiplication) && (this.arbre2 instanceof Multiplication))
+			if (this.arbre2 instanceof Multiplication || this.arbre2 instanceof Division)
 		    	solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 		    else
 		    	solution = this.arbre1.lire_solution() + "*(" + this.arbre2.lire_solution() + ")";
 		}
 		if (!(this.arbre1 instanceof Nombre) && this.arbre2 instanceof Nombre)
 		{
-			if ((this.arbre1 instanceof Multiplication) && !(this.arbre2 instanceof Multiplication))
-		    	solution = this.arbre1.lire_solution() + "*(" + this.arbre2.lire_solution() + ")";
+			if (this.arbre1 instanceof Multiplication)
+		    	solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 		    else
 		    	solution = "(" + this.arbre1.lire_solution() + ")*" + this.arbre2.lire_solution();
 		}
-	    
+		if (this.arbre1 instanceof Nombre && this.arbre2 instanceof Nombre)
+			solution = this.arbre1.lire_solution() + "*" + this.arbre2.lire_solution();
 	    return(solution);
     } 
 	

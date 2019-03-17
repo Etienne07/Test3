@@ -6,7 +6,7 @@ public class Valeurs_trouvees
 		
 	public Valeurs_trouvees ()
 	{
-		int [] liste_valeurs = {};
+		int [] liste_valeurs = new int[0];
 	}
 	
 	public Valeurs_trouvees (int [] liste_val)
@@ -16,6 +16,12 @@ public class Valeurs_trouvees
 	
 	public Valeurs_trouvees ajouter_valeur(int val)
 	{
+		if (this.liste_valeurs == null)
+		{
+			int [] init = new int[0];
+			this.liste_valeurs = init;
+		}
+		
 		int taille = this.liste_valeurs.length;
 		int [] nouv_liste = new int [taille +1];
 		if (taille == 0)
@@ -36,6 +42,12 @@ public class Valeurs_trouvees
 	
 	public boolean is_in(int val)
 	{
+		if (this.liste_valeurs == null)
+		{
+			int [] init = new int[0];
+			this.liste_valeurs = init;
+		}
+		
 		int marqueur = 0;
 		for (int elem1 : this.liste_valeurs)
 		{
