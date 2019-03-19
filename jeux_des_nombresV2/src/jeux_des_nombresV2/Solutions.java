@@ -41,16 +41,21 @@ public class Solutions
 	
 	public String lire_solution_finale()
 	{
-		String expression = new String();
-		expression += "\nL'ensemble des solutions trouvées est :";
-		int taille = this.liste_solution.length;
-		for (int i=0;i<taille;i++)
+		if (this.liste_solution == null || this.liste_solution.length == 0)
+			return("\n Il n'existe pas de solution \n");
+		else
 		{
-			String nouvelle_expression = new String();
-			nouvelle_expression = this.liste_solution[i].lire_solution();
-			expression+="\n"+ this.liste_solution[i].valeur + "=" + nouvelle_expression;
+			String expression = new String();
+			expression += "\nL'ensemble des solutions trouvées est :";
+			int taille = this.liste_solution.length;
+			for (int i=0;i<taille;i++)
+			{
+				String nouvelle_expression = new String();
+				nouvelle_expression = this.liste_solution[i].lire_solution();
+				expression+="\n"+ this.liste_solution[i].valeur + "=" + nouvelle_expression;
+			}
+			return(expression);
 		}
-		return(expression);
 	}
 
 	public void tri_solutions()

@@ -9,6 +9,34 @@ import java.util.Scanner;
 public class mainClasseV2 {
     public static void main(String[] args)
 	{
+    	//Test de compare_arbres
+    	Arbre test1 = new Arbre();
+    	Arbre test2 = new Arbre();
+    	int t1 [] = {1,2};
+    	int t2 [] = {1,3};
+    	test1.liste_generateurs=t1;
+    	test2.liste_generateurs=t2;
+    	if (test1.compare_generateurs(test2))
+    		System.out.println("OK !!!");
+    	else
+    		System.out.println("Raté...");
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
 		Scanner sc = new Scanner(System.in);
 
 	    //Initialisation des variables
@@ -427,8 +455,8 @@ public class mainClasseV2 {
 	    	}
 	    	
 	    	//int nb_de_generateurs = fam_pb3.liste_famille_arbre.length;
-	    	//while (taille == 0 || etape < nb_de_generateurs + 1)
-	    	while (taille == 0) 
+	    	//tant qu'on n'a pas trouvé de solution ou qu'il n'y a pas de solution (etape < nb_de_generateurs de départ + 1)
+	    	while (taille == 0 && etape < for_pb3.liste_famille[0].liste_famille_arbre.length + 1) 
 	    	{
 	    					    
 			  //Creation de la nouvelle famille
@@ -440,7 +468,15 @@ public class mainClasseV2 {
 		    	int j = etape-1;
 		    	while (i<=j)//Permet de donner les couples de familles à combiner par des opérations		
 		    	{
+		    		
 		    		//Pacours des familles complémentaires
+		    		
+		    		//gestion de familles nulles
+		    		Arbre [] vide = new Arbre[0];
+		    		if (for_pb3.liste_famille[i].liste_famille_arbre == null)
+		    			for_pb3.liste_famille[i].liste_famille_arbre = vide;
+		    		if (for_pb3.liste_famille[j].liste_famille_arbre == null)
+		    			for_pb3.liste_famille[j].liste_famille_arbre = vide;
 		    		
 			    	//Simplification de la notation
 			    	int taillei = for_pb3.liste_famille[i].liste_famille_arbre.length;
@@ -454,9 +490,9 @@ public class mainClasseV2 {
 		    			for (int j1 = 0; j1 < taillej; j1++)
 			    		{
 		    		//On vérifie que les deux arbres n'ont pas de générateurs communs 
-		    			boolean verification = famillei.liste_famille_arbre[i1].compare_generateurs(famillej.liste_famille_arbre[j1]);
-			   			//if (verification)
-			   			//{
+		    			//boolean verification = famillei.liste_famille_arbre[i1].compare_generateurs(famillej.liste_famille_arbre[j1]);
+			   			if (famillei.liste_famille_arbre[i1].compare_generateurs(famillej.liste_famille_arbre[j1]))
+			   			{
 			   			//On effectue les 4 opérations
 		    			
 			   				Addition add_pb3 = new Addition();
@@ -499,7 +535,7 @@ public class mainClasseV2 {
 									fam_nvlle_etape_pb3=fam_nvlle_etape_pb3.ajouter_arbre_famille(arbres_pb3);
 								}
 							}
-			   			//}
+			   			}
 					}		
 	    		}
 		    		
