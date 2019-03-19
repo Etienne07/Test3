@@ -1,11 +1,11 @@
 package jeux_des_nombresV2;
 import java.util.Arrays;
 import java.util.Scanner;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 
-=======
->>>>>>> branch 'master' of https://github.com/Etienne07/Test3.git
+//=======
+//>>>>>>> branch 'master' of https://github.com/Etienne07/Test3.git
 public class mainClasseV2 {
     public static void main(String[] args)
 	{
@@ -168,7 +168,7 @@ public class mainClasseV2 {
 			    }
 			    
 		//Une fois la solution trouvées, on la trie, puis on afficher le résultat
-			    //sol_pb1.tri_solutions();
+			    sol_pb1.tri_solutions();
 			    
 			    //for (Arbre test : sol_pb1.liste_solution)
 			    //{
@@ -319,7 +319,7 @@ public class mainClasseV2 {
 			    }
 			    
 		//Une fois la solution trouvées, on la trie, puis on afficher le résultat
-			    //sol_pb2=sol_pb2.tri_solutions();
+			    sol_pb2.tri_solutions();
 			    
 			 //Test si sol_pb2 est mal initialisée
 			    //if (nombre_d_ope != 0)
@@ -526,24 +526,9 @@ public class mainClasseV2 {
      
     //On invite l'utilisateur à recommencer ou à quitter
 
-    do{       
-    	System.out.println("Souhaitez-vous rejouer ? (O/N)");
-    	reponse = sc.nextLine().charAt(0);
-      		
-    }while(reponse != 'O' && reponse != 'N');
-	
-    //Cf la boucle "Rejouer"
-	}while(reponse == 'O');  
-     		    
-    System.out.println("Au revoir !");
-    sc.close();
-  
-    	//Fin de programme
-    
-   }	
-}	
+    	
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	      //On invite l'utilisateur à recommencer ou à quitter
 
 	      do{       
@@ -566,92 +551,10 @@ public class mainClasseV2 {
 
 	  //Fin de programme
 
-	  
-
-	    
-
-	 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		Nombre sept = new Nombre();
-		sept.valeur = 7;
-		Nombre un = new Nombre();
-		un.valeur = 1;
-		Soustraction arbre0 = new Soustraction();
-		arbre0.arbre1 = sept;
-		arbre0.arbre2 = un;
-		arbre0.valeur = 6;
-		Addition arbre00 = new Addition();
-		arbre00.arbre1 = sept;
-		arbre00.arbre2 = un;
-		arbre00.valeur = 8;
-		//System.out.println(arbre0.toString());
-		//System.out.println(un.lire_solution());
-		//System.out.println(sept.lire_solution());
-		//System.out.println(arbre0.lire_solution());
-		Soustraction arbre3 = new Soustraction();
-		Addition arbre4 = new Addition();
-		arbre4 = arbre00;
-		arbre3 = arbre0;
-		//arbre4 = arbre00.operation(arbre0);
-		//arbre3 = arbre0.operation(arbre0);
-		//System.out.println(arbre3.arbre1 + "\n Suivi de : \n " + arbre3.arbre2 + "\n Puis de sa valeur : \n " + arbre3.valeur);
-		//System.out.println(arbre3);
-		//System.out.println(arbre3.lire_solution());
-		
-		Arbre [] liste = new Arbre[3];
-		liste[0]=un;
-		liste[1]=sept;
-		liste[2]=arbre0;
-		Arbre [] liste1 = new Arbre[1];
-		liste1[0]=arbre3;		
-		Arbre [] liste2 = new Arbre[4];
-		Solutions nouvelle_liste = new Solutions(liste);
-		Solutions nouvelle_liste1 = new Solutions(liste1);
-		Solutions nouvelle_liste2 = new Solutions();
-		nouvelle_liste2 = nouvelle_liste.ajouter_arbre_solution(arbre4);
-		//nouvelle_liste.ajouter_arbre_solution(un);
-		//nouvelle_liste.ajouter_arbre_solution(arbre0);
-		//nouvelle_liste.ajouter_arbre_solution(arbre3);
-		//nouvelle_liste.ajouter_arbre_solution(arbre4);
-		//Arbre [] liste = new Arbre[5];
-		//System.out.println(nouvelle_liste2.liste_solution[0].toString());
-		//System.out.println(nouvelle_liste2.liste_solution[1].toString());
-		//System.out.println(nouvelle_liste2.liste_solution[2].toString());
-		//System.out.println(nouvelle_liste2.liste_solution[3].toString());
-		//System.out.println(nouvelle_liste2.lire_solution_finale());
-		
-		Famille fam1 = new Famille(0,liste);
-		Famille fam2 = new Famille(1,liste1);
-		fam1.liste_famille_arbre[0]=sept;
-		fam1.liste_famille_arbre[0]=un;
-		fam1= fam1.ajouter_arbre_famille(un);
-		fam1 = fam1.ajouter_arbre_famille(sept);
-		Famille famtest []= new Famille[2];
-		famtest[0]=fam1;
-		famtest[1]=fam2;
-		fam2 = fam2.ajouter_arbre_famille(arbre0);
-		Foret for1 = new Foret(famtest);
-		for1.ajouter_famille(fam2);
-		//System.out.println(nouvelle_liste2.liste_solution[0].toString());
-		Famille nouvelle_liste3 = new Famille(0,liste);
-		Famille nouvelle_liste4 = new Famille(1,liste1);
-		Famille nouvelle_liste5 = new Famille();
-		//System.out.println(nouvelle_liste3.liste_famille_arbre[0].toString());
-		//System.out.println(nouvelle_liste3.liste_famille_arbre[1].toString());
-		
-		
+	 			
 	}
 	
 }
 
-=======
->>>>>>> branch 'master' of https://github.com/Etienne07/Test3.git
+//=======
+//>>>>>>> branch 'master' of https://github.com/Etienne07/Test3.git
