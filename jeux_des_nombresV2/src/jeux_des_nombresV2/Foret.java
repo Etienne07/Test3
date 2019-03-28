@@ -16,11 +16,13 @@ public class Foret
 
 	public Foret ajouter_famille(Famille family)
 	{
-		if (this.liste_famille == null)
+		//Vérifie si la forêt est vide
+		if (this.liste_famille == null)//Si oui, on renvoie une forêt avec la nouvelle famille
 		{
 			Famille [] init = new Famille[0];
 			this.liste_famille = init;
 		}
+		//Sinon on créé une nouvelle forêt duplicant la 1ère et ajoutant la nouvelle famille 
 		int taille = this.liste_famille.length;
 		Famille [] nouv_liste = new Famille [taille +1];
 		if (taille == 0)
@@ -38,7 +40,4 @@ public class Foret
 		Foret nouv_foret = new Foret(nouv_liste);
 		return(nouv_foret);
 	}
-			
-	
-
 }

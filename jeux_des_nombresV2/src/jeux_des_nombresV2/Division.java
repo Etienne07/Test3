@@ -21,32 +21,30 @@ public class Division extends Arbre
 		arbre2 = nouvel_arbre2;
 	}
 	
-	public void operation(Arbre arbre1,Arbre arbre2)
+	public void operation(Arbre arbre1,Arbre arbre2)//Effectue la division entre deux arbres
 	{
 		int valeur1 = arbre1.valeur;
 		int valeur2 = arbre2.valeur;
-		if (valeur1!=0 && valeur2 != 0)
+		//On créé un nouvel objet division entre les deux arbres
+		//On va donc initialiser les instances de ce nouvel arbre
+		if (valeur1!=0 && valeur2 != 0) //On fait attention au cas de division par 0			
 		{
-			if (valeur1 >= valeur2)
+			if (valeur1 >= valeur2)//On ne retiens que les divisions pouvant donner un entier
 			{
-				//Division nouvel_arbre = new Division();
 				this.arbre1 = arbre1;
 				this.arbre2 = arbre2;
 				int nouvelle_valeur = valeur1 / valeur2;
 				this.valeur = nouvelle_valeur;
-				//return(nouvel_arbre);
 			}
 			else
 			{
-				//Division nouvel_arbre = new Division();
 				this.arbre1 = arbre2;
 				this.arbre2 = arbre1;
 				int nouvelle_valeur = valeur2 / valeur1;
 				this.valeur = nouvelle_valeur;
-				//return(nouvel_arbre);
 			}
 		}
-		else
+		else //Ce cas de division par 0 ne devrait pas arriver, dans le doute on renvoie l'arbre unité et un message d'erreur
 			{
 			int [] test1 = {1};
 			Nombre test = new Nombre(1,test1);
@@ -68,7 +66,7 @@ public class Division extends Arbre
 		this.liste_generateurs = liste_gen;
 	}
 
-	public String lire_solution()
+	public String lire_solution()//Renvoie la solution correspondante de l'arbre en plaçant bien les parenthèses
 	{
 	    String solution = new String();
 	    if (!(this.arbre1 instanceof Nombre) && !(this.arbre2 instanceof Nombre)) 
@@ -79,7 +77,7 @@ public class Division extends Arbre
 		    	solution = this.arbre1.lire_solution() + "/(" + this.arbre2.lire_solution() + ")";
 		    return(solution);
 	    }
-	    if (this.arbre1 instanceof Nombre && !(this.arbre2 instanceof Nombre))
+	    else if (this.arbre1 instanceof Nombre && !(this.arbre2 instanceof Nombre))
 	    {
 	    	solution = this.arbre1.lire_solution() + "/(" + this.arbre2.lire_solution() + ")";
 		    return(solution);
@@ -93,10 +91,4 @@ public class Division extends Arbre
 		    return(solution);
 	    }
     } 
-	
-	public String toString()
-	{
-		String str = "[" + this.arbre1.toString() + ";" + this.arbre2.toString() + "; val = " + this.valeur + "]";
-		return str;
-	}
 }

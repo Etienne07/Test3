@@ -14,11 +14,13 @@ public class Solutions
 		liste_solution = nouvelle_liste_arbre;
 	}
 	
+	//Méthode d'ajout d'arbre dans la solution
 	public Solutions ajouter_arbre_solution(Arbre arbre)
 	{
+		//Vérifie si la liste de solution est vide
 		if (this.liste_solution == null)
 		{
-			Arbre [] init = new Arbre[0];
+			Arbre [] init = new Arbre[0]; //Si oui, on renvoie une liste avec l'arbre solution
 			this.liste_solution = init;
 		}
 		int taille = this.liste_solution.length;
@@ -27,7 +29,7 @@ public class Solutions
 		{
 			nouv_liste[0]=arbre;
 		}
-		else
+		else //Sinon, on va créer une nouvelle liste en partant de l'ancienne et en ajoutant le nouvel arbre solution
 		{
 			for (int i=0; i<taille;i++)
 			{
@@ -39,33 +41,41 @@ public class Solutions
 		return(solut);
 	}
 	
+	// Méthode de lecture de la solution
 	public String lire_solution_finale()
 	{
+		//S'il n'y a pas de solution :
 		if (this.liste_solution == null || this.liste_solution.length == 0)
 			return("\n Il n'existe pas de solution \n");
+
+		//Sinon
 		else
 		{
+			// On créé une chaîne de caractère en parcourant 
 			String expression = new String();
 			expression += "\nL'ensemble des solutions trouvées est :";
 			int taille = this.liste_solution.length;
 			for (int i=0;i<taille;i++)
 			{
 				String nouvelle_expression = new String();
-				nouvelle_expression = this.liste_solution[i].lire_solution();
+				//On utilise ici la méthode 'lire_solution' sur chacune des solutions :
+				nouvelle_expression = this.liste_solution[i].lire_solution(); 
 				expression+="\n"+ this.liste_solution[i].valeur + "=" + nouvelle_expression;
 			}
-			return(expression);
+			return(expression); //On renvoie la solution finale
 		}
 	}
 
+	//Méthode de tri de la solution
 	public void tri_solutions()
 	{
+		//Vérifie si la solution est vide
 		if (this.liste_solution == null)
 		{
 			Arbre [] init = new Arbre[0];
 			this.liste_solution = init;
 		}
-		else
+		else //Sinon on effectue un algorithme de tri sélection pour placer à chaque étape le plus petit arbre de la liste en 1ère position
 		{
 			int taille = this.liste_solution.length;
 			if (taille != 0)
@@ -84,22 +94,13 @@ public class Solutions
 					{
 						if (debut.valeur <= this.liste_solution[j].valeur)
 						{
-							//Evite l'erreur
+							//Evite l'erreur. C'est la seule combine trouvée pour que la boucle 'if' soit effectivement lue.
 						}
 						
 						else
 						{
-							System.out.println("debut = " + debut.valeur);
-							System.out.println("new  = " + this.liste_solution[j].valeur);
 							debut = this.liste_solution[j];
 							jmarqueur = j;
-							System.out.println("etape i = " + i);
-							System.out.println("etape j = " + j);
-							
-							
-							
-							System.out.println("jmarqueur = " + jmarqueur);
-							System.out.println("jvaleur = " + debut.valeur + "\n");
 						}
 						j+=1;
 					}
@@ -110,6 +111,4 @@ public class Solutions
 			}
 		}
 	}
-
-
 }

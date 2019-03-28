@@ -14,14 +14,16 @@ public class Valeurs_trouvees
 		liste_valeurs = liste_val;
 	}
 	
-	public Valeurs_trouvees ajouter_valeur(int val)
+	//Ajoute une valeur à la liste des valeurs trouvées
+	public Valeurs_trouvees ajouter_valeur(int val) 
 	{
-		if (this.liste_valeurs == null)
+		if (this.liste_valeurs == null) //Regarde si la liste est vide
 		{
 			int [] init = new int[0];
-			this.liste_valeurs = init;
+			this.liste_valeurs = init; //Si oui, on renvoie une liste vide
 		}
 		
+		//Création de la nouvelle liste de valeurs à renvoyer que l'on rempli des valeurs déjà trouvées et de la nouvelle valeur
 		int taille = this.liste_valeurs.length;
 		int [] nouv_liste = new int [taille +1];
 		if (taille == 0)
@@ -40,6 +42,7 @@ public class Valeurs_trouvees
 		return(solut);
 	}
 	
+	//Verifier si la valeur a déjà été trouvée
 	public boolean is_in(int val)
 	{
 		if (this.liste_valeurs == null)
@@ -48,7 +51,7 @@ public class Valeurs_trouvees
 			this.liste_valeurs = init;
 		}
 		
-		int marqueur = 0;
+		int marqueur = 0; //Marqueur valant 0 tant qu'on ne trouve pas cette valeur en parcourant la liste des valeurs
 		for (int elem1 : this.liste_valeurs)
 		{
 			if (elem1 == val)

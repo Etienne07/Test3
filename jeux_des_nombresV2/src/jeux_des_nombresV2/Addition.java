@@ -22,16 +22,16 @@ public class Addition extends Arbre
 		arbre2 = nouvel_arbre2;
 	}
 	
-	public void operation(Arbre arbre1,Arbre arbre2)
+	public void operation(Arbre arbre1,Arbre arbre2)//Effectue l'addition entre deux arbres
 	{
 		int valeur1 = arbre1.valeur;
 		int valeur2 = arbre2.valeur;
-		//Addition nouvel_arbre = new Addition();
+		//On créé un nouvel objet addition entre les deux arbres
+		//On va donc initialiser les instances de ce nouvel arbre
 		this.arbre1 = arbre1;
 		this.arbre2 = arbre2;
 		int nouvelle_valeur = valeur1 + valeur2;
 		this.valeur = nouvelle_valeur;
-		//return(nouvel_arbre);
 		int [] liste_gen = new int[arbre1.liste_generateurs.length + arbre2.liste_generateurs.length];
 		for (int i = 0;i < arbre1.liste_generateurs.length;i++)
 		{
@@ -45,16 +45,10 @@ public class Addition extends Arbre
 		
 	}
 
-	public String lire_solution()
+	public String lire_solution()//Renvoie la solution correspondante de l'arbre
 	{
 	    String solution = new String();
 		solution = this.arbre1.lire_solution() + "+" + this.arbre2.lire_solution();
 	    return(solution);
     } 
-	
-	public String toString()
-	{
-		String str = "[" + this.arbre1.toString() + ";" + this.arbre2.toString() + "; val = " + this.valeur + "]";
-		return str;
-	}
 }

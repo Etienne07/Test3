@@ -30,8 +30,7 @@ public class Arbre
 		return str;
 	}
 	
-	//abstract void operation();
-	
+	//Méthode renvoyant 'true' si les 2 arbres n'ont pas de générateurs en commun
 	public boolean compare_generateurs(Arbre arbre)
 	{
 		int marqueur = 0;
@@ -47,7 +46,6 @@ public class Arbre
 					}
 				}
 			}
-		
 		if (marqueur == 0)
 			{
 				return true;
@@ -57,6 +55,4 @@ public class Arbre
 				return false;
 			}
 	}
-	
-	
 }

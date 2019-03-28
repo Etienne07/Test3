@@ -19,14 +19,16 @@ public class Famille
 
 		public Famille ajouter_arbre_famille(Arbre arbre)
 		{			
-			if (this.liste_famille_arbre == null)
+			//Vérifie si la famille est vide
+			if (this.liste_famille_arbre == null)//Si oui, on renvoie une famille composée du nouvel arbre
 			{
 				Arbre [] init = new Arbre[0];
 				this.liste_famille_arbre = init;
 			}
+			//Sinon, on renvoie une famille dupliacant la 1ère et ajoutant le nouvel arbre
 			int taille = this.liste_famille_arbre.length;
 			Arbre [] nouv_liste = new Arbre [taille +1];
-			int nouv_ope = 0;// Peut poser pb pour des cas particuliers
+			int nouv_ope = 0;
 			if (taille == 0)
 			{
 				nouv_liste[0]=arbre;

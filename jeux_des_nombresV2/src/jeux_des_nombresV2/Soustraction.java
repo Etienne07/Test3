@@ -21,28 +21,25 @@ public class Soustraction extends Arbre
 		arbre2 = nouvel_arbre2;
 	}
 	
-	//public Soustraction operation(Arbre arbre)
-	public void operation(Arbre arbre1,Arbre arbre2)
+	public void operation(Arbre arbre1,Arbre arbre2) //Effectue la soustraction entre deux arbres
 	{
 		int valeur1 = arbre1.valeur;
 		int valeur2 = arbre2.valeur;
-		if (valeur1 >= valeur2)
+		//On créé un nouvel objet soustraction entre les deux arbres
+		//On va donc initialiser les instances de ce nouvel arbre
+		if (valeur1 >= valeur2) //Permet de ne pas avoir de nombres négatifs
 		{
-			//Soustraction nouvel_arbre = new Soustraction();
 			this.arbre1 = arbre1;
 			this.arbre2 = arbre2;
 			int nouvelle_valeur = valeur1 - valeur2;
 			this.valeur = nouvelle_valeur;
-			//return(nouvel_arbre);
 		}
 		else
 			{
-			//Soustraction nouvel_arbre = new Soustraction();
 			this.arbre1 = arbre2;
 			this.arbre2 = arbre1;
 			int nouvelle_valeur = valeur2-valeur1;
 			this.valeur = nouvelle_valeur;
-			//return(nouvel_arbre);
 			}
 		int [] liste_gen = new int[arbre1.liste_generateurs.length + arbre2.liste_generateurs.length];
 		for (int i = 0;i < arbre1.liste_generateurs.length;i++)
@@ -56,21 +53,15 @@ public class Soustraction extends Arbre
 		this.liste_generateurs = liste_gen;
 	}
 	
-	public String lire_solution()
+	public String lire_solution() //Renvoie la solution correspondante de l'arbre en plaçant bien les parenthèses
 	{
 	    String solution = new String();
 	    if (this.arbre2 instanceof Addition)
 	    	solution = this.arbre1.lire_solution() + "-(" + this.arbre2.lire_solution() + ")";
-	    if (this.arbre2 instanceof Soustraction)
+	    else if (this.arbre2 instanceof Soustraction)
 	    	solution = this.arbre1.lire_solution() + "-(" + this.arbre2.lire_solution() + ")";
 	    else
 	    	solution = this.arbre1.lire_solution() + "-" + this.arbre2.lire_solution();
 	    return(solution);
     } 
-	
-	public String toString()
-	{
-		String str = "[" + this.arbre1.toString() + ";" + this.arbre2.toString() + "; val = " + this.valeur + "]";
-		return str;
-	}
 }

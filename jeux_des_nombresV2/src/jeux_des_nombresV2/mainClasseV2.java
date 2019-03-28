@@ -1,5 +1,4 @@
 package jeux_des_nombresV2;
-import java.util.Arrays;
 import java.util.Scanner;
 //<<<<<<< HEAD
 
@@ -9,34 +8,7 @@ import java.util.Scanner;
 public class mainClasseV2 {
     public static void main(String[] args)
 	{
-    	//Test de compare_arbres
-    	Arbre test1 = new Arbre();
-    	Arbre test2 = new Arbre();
-    	int t1 [] = {1,2};
-    	int t2 [] = {1,3};
-    	test1.liste_generateurs=t1;
-    	test2.liste_generateurs=t2;
-    	if (test1.compare_generateurs(test2))
-    		System.out.println("OK !!!");
-    	else
-    		System.out.println("Raté...");
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+    	    	
 		Scanner sc = new Scanner(System.in);
 
 	    //Initialisation des variables
@@ -62,7 +34,7 @@ public class mainClasseV2 {
 		        
 		        mode = sc.nextLine().charAt(0);
 	   
-		        //Vérifie que la rréponse est valide
+		        //Vérifie que la réponse est valide
 		        if(mode != '1' && mode != '2' && mode != '3')
 
 		        	System.out.println("Mode inconnu, veuillez réitérer votre choix.");
@@ -73,12 +45,20 @@ public class mainClasseV2 {
 	    	if(mode == '1')
 	    	{
 	    		//Saisie du générateur
-
+	    		//do {//Tant que reponse invalide
 			    System.out.println("Entrer un entier générateur :");
 			    
 			    int generateur_pb1 = sc.nextInt();
 			    //Pensez à vider la ligne lue
 			    sc.nextLine();
+			    
+			  //Vérifie que la réponse est valide
+		       // if(!(mode instanceof ))
+
+		        	//System.out.println("Entrer un entier naturel valide");
+
+
+	    		//}while (mode != '1' && mode != '2' && mode != '3');
 
 		  //Initialisation du pb 1
 			    
@@ -113,10 +93,7 @@ public class mainClasseV2 {
 			    int etape = 1;
 			    while (taille <= generateur_pb1)	    
 			    {  	
-			    //Méthode 1 - Creation de la nouvelle famille
-			    	//Arbre [] init = {};
-			    	//Famille fam_nvlle_etape_pb1 = new Famille(etape, init);
-			    //Méthode 2 - Creation de la nouvelle famille:
+			    //Creation de la nouvelle famille:
 			    	Famille fam_nvlle_etape_pb1 = new Famille();
 			    	fam_nvlle_etape_pb1.nb_operations=etape;
 			    	
@@ -139,7 +116,7 @@ public class mainClasseV2 {
 			    		{
 			    			for (int j1 = 0; j1 < taillej; j1++)
 			    			{
-			    			//On effectue les 4 opérations			    				
+			    			//On effectue les 3 opérations (on garde la division pour juste après)			    				
 			    				Addition add_pb1 = new Addition();
 			    				add_pb1.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
 			    					
@@ -153,10 +130,13 @@ public class mainClasseV2 {
 								Arbre [] nouv_arbres_pb1 = {add_pb1,sous_pb1,mult_pb1};
 								
 								//Cas particulier de la division
+								//On ne divise pas par 0 :
 		    					if (famillei.liste_famille_arbre[i1].valeur!=0 && famillej.liste_famille_arbre[j1].valeur!=0)
 		    					{
+		    						//La division doit donner un entier :
 		    						if (famillei.liste_famille_arbre[i1].valeur % famillej.liste_famille_arbre[j1].valeur ==0 || famillej.liste_famille_arbre[j1].valeur % famillei.liste_famille_arbre[i1].valeur==0)
 		    						{
+		    							//Alors seulement on effectue la division
 		    							Division div_pb1 = new Division();
 		    							div_pb1.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
 			    						Arbre [] nouv_arbres_v2 = {add_pb1,sous_pb1,mult_pb1,div_pb1};
@@ -197,12 +177,6 @@ public class mainClasseV2 {
 			    
 		//Une fois la solution trouvées, on la trie, puis on afficher le résultat
 			    sol_pb1.tri_solutions();
-			    
-			    //for (Arbre test : sol_pb1.liste_solution)
-			    //{
-			    //	System.out.println(String.valueOf(test.valeur));
-			    //	System.out.println(test.lire_solution());
-			    //}
 			    System.out.println(sol_pb1.lire_solution_finale());
 	    	}
 	    	
@@ -247,11 +221,7 @@ public class mainClasseV2 {
 			    liste_val_pb2[0] = arbre_pb2.valeur;
 			    Valeurs_trouvees val_trouvees_pb2 = new Valeurs_trouvees(liste_val_pb2);
 			    
-			//Méthode 1 - Initialisation de Solutions
-			    //Arbre [] liste_solution_pb2 = new Arbre[1];
-			    //liste_solution_pb2[0]=arbre_pb2;
-			    //Solutions sol_pb2 = new Solutions(liste_solution_pb2);
-			//Méthode 2 - Initialisation de Solutions
+			    //Initialisation de Solutions
 			    Solutions sol_pb2 = new Solutions();
 			    
 		//Debut de la boucle principale de calculs des arbres
@@ -259,10 +229,7 @@ public class mainClasseV2 {
 			    while (etape <= nombre_d_ope)	    
 			    {  	
 			    
-			    //Méthode 1 - Creation de la nouvelle famille
-			    	//Arbre [] init = {};
-			    	//Famille fam_nvlle_etape_pb2 = new Famille(etape, init);
-			    //Méthode 2 - Creation de la nouvelle famille
+			    //Creation de la nouvelle famille
 			    	Famille fam_nvlle_etape_pb2 = new Famille();
 			    	fam_nvlle_etape_pb2.nb_operations = etape; 
 			    	
@@ -301,10 +268,13 @@ public class mainClasseV2 {
 									Arbre [] nouv_arbres_pb2 = {add_pb2,sous_pb2,mult_pb2};
 										
 									//Cas particulier de la division
+									//On ne divise pas par 0 :
 				   					if (famillei.liste_famille_arbre[i1].valeur!=0 && famillej.liste_famille_arbre[j1].valeur!=0)
 				    				{
+				   					//La division doit donner un entier :
 				    					if (famillei.liste_famille_arbre[i1].valeur % famillej.liste_famille_arbre[j1].valeur ==0 || famillej.liste_famille_arbre[j1].valeur % famillei.liste_famille_arbre[i1].valeur==0)
 			    						{
+				    						//Alors seulement on effectue la division
 			    							Division div_pb2 = new Division();
 			    							div_pb2.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
 				    						Arbre [] nouv_arbres_v2 = {add_pb2,sous_pb2,mult_pb2,div_pb2};
@@ -348,29 +318,6 @@ public class mainClasseV2 {
 			    
 		//Une fois la solution trouvées, on la trie, puis on afficher le résultat
 			    sol_pb2.tri_solutions();
-			    
-			 //Test si sol_pb2 est mal initialisée
-			    //if (nombre_d_ope != 0)
-			    //{
-			    	
-			    //	Solutions solution = new Solutions();
-			    //	Arbre [] sol = new Arbre[sol_pb2.liste_solution.length-1];
-			    //	solution.liste_solution=sol;
-			    //	for (int i=0; i<sol_pb2.liste_solution.length-1;i++)
-			    //	{
-			    //		solution.liste_solution[i]=sol_pb2.liste_solution[i+1];
-			    //	}
-			    //	sol_pb2 = solution;
-			    //}
-			    
-			    //TEST
-			    //for (Arbre test : sol_pb2.liste_solution)
-			    //{
-			    //	System.out.println(test.valeur);
-			    //	System.out.println(test.lire_solution());
-			    //}
-			   	
-			    
 			    System.out.println(sol_pb2.lire_solution_finale());
 	    	}
 	    
@@ -508,10 +455,13 @@ public class mainClasseV2 {
 							Arbre [] nouv_arbres_pb3 = {add_pb3,sous_pb3,mult_pb3};
 							
 							//Cas particulier de la division
+							//On ne divise pas par 0 :
 	    					if (famillei.liste_famille_arbre[i1].valeur!=0 && famillej.liste_famille_arbre[j1].valeur!=0)
 	    					{
+	    						//La division doit donner un entier :
 	    						if (famillei.liste_famille_arbre[i1].valeur % famillej.liste_famille_arbre[j1].valeur ==0 || famillej.liste_famille_arbre[j1].valeur % famillei.liste_famille_arbre[i1].valeur==0)
 	    						{
+	    							//Alors seulement on effectue la division
 	    							Division div_pb3 = new Division();
 	    							div_pb3.operation(famillei.liste_famille_arbre[i1],famillej.liste_famille_arbre[j1]);
 		    						Arbre [] nouv_arbres_v2 = {add_pb3,sous_pb3,mult_pb3,div_pb3};
@@ -556,7 +506,6 @@ public class mainClasseV2 {
     	}
 		    
     //Une fois la solution trouvées, on la trie, puis on afficher le résultat
-    	//sol_pb3=sol_pb3.tri_solutions();
     	System.out.println(sol_pb3.lire_solution_finale());
     }    	
      
@@ -589,7 +538,6 @@ public class mainClasseV2 {
 
 	 			
 	}
-	
 }
 
 //=======
