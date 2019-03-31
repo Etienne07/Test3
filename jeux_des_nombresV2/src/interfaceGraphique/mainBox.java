@@ -12,6 +12,7 @@ import jeux_des_nombresV2.mainClasseV2;
 	private JButton pbm1 = new JButton("Problème 1");
 	private JButton pbm2 = new JButton("Problème 2");
 	private JButton pbm3 = new JButton("Problème 3");	
+	public static String entree = new String();
 	
 	public mainBox() {
 		super();
@@ -43,9 +44,13 @@ import jeux_des_nombresV2.mainClasseV2;
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		
+		
 		if(source == pbm1) {
 			Pbm1Box fenetre1 = new Pbm1Box();
 			fenetre1.setVisible(true);
+			input = Pbm1Box.generateur;
+			
+			
 		}
 		else if(source == pbm2){
 			Pbm2Box fenetre2 = new Pbm2Box();
