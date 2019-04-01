@@ -7,16 +7,27 @@ import java.awt.event.ActionListener;
 import jeux_des_nombresV2.mainClasseV2;
 
 
+
  public class Pbm1Box extends JFrame implements ActionListener {
 	 
 	private panneau1 fenetre = new panneau1();
 	private JTextField texteNbGen = new JTextField();
-	public static String generateur = new String();
+	public static String generateur = new String("NA");
+	public static int etat = 0;
+	
 	private JButton OK = new JButton("OK");
 	
 	public Pbm1Box() {
 		super();
 		build();
+	}
+	
+	public String getString() {
+		return generateur;
+	}
+	
+	public int getState() {
+		return etat;
 	}
 	
 	private void build()
@@ -34,16 +45,14 @@ import jeux_des_nombresV2.mainClasseV2;
 		getContentPane().add(OK);
 		OK.setBounds(100, 300, 150, 50);
 		OK.addActionListener(this);
-		
-		generateur = texteNbGen.getText();
-		
-		
+			
 	 }
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		
 		if(source == OK) {
 			generateur = texteNbGen.getText();
+			etat = 1;
 			this.dispose();
 		}
 	

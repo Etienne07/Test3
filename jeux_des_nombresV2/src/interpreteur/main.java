@@ -18,12 +18,13 @@ public class main {
 				interfaceGraphique.mainBox fenetre = new interfaceGraphique.mainBox();
 				fenetre.setVisible(true);
 				input = interfaceGraphique.mainBox.entree;
+//				System.out.println(input);
 //				output = jeux_des_nombresV2.mainClasseV2.retour;
 				
-				
-				
-				
-				
+				output = input;
+				interfaceGraphique.ResultatBox fenetre_resultat = new interfaceGraphique.ResultatBox(output);
+				fenetre_resultat.setVisible(true);
+			
 				
 			}
 		});

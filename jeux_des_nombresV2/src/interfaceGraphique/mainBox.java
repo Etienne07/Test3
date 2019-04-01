@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import jeux_des_nombresV2.mainClasseV2;
+import java.lang.Thread;
 
 
  public class mainBox extends JFrame implements ActionListener {
@@ -12,7 +13,7 @@ import jeux_des_nombresV2.mainClasseV2;
 	private JButton pbm1 = new JButton("Problème 1");
 	private JButton pbm2 = new JButton("Problème 2");
 	private JButton pbm3 = new JButton("Problème 3");	
-	public static String entree = new String();
+	public static String entree = new String("NA");
 	
 	public mainBox() {
 		super();
@@ -48,10 +49,11 @@ import jeux_des_nombresV2.mainClasseV2;
 		if(source == pbm1) {
 			Pbm1Box fenetre1 = new Pbm1Box();
 			fenetre1.setVisible(true);
-			input = Pbm1Box.generateur;
-			
-			
+//			while(fenetre1.getState() == 0) {}
+			entree = fenetre1.getString();
+			System.out.println(entree);
 		}
+		
 		else if(source == pbm2){
 			Pbm2Box fenetre2 = new Pbm2Box();
 			fenetre2.setVisible(true);
