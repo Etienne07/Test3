@@ -8,6 +8,28 @@ import java.util.Scanner;
 public class mainClasseV2 {
     public static void main(String[] args)
 	{
+    	String [] pb1 = new String[2];
+    	String [] pb2 = new String[3];
+    	String [] pb3 = new String[5];
+    	pb1[0] = "1";
+    	pb1[1] = "10";
+    	
+    	pb2[0] = "2";
+    	pb2[1] = "10";
+    	pb2[2] = "5";
+    	
+    	pb3[0] = "3";
+    	pb3[1] = "10";
+    	pb3[2] = "2";
+    	pb3[3] = "5";
+    	pb3[4] = "3";    	
+    	
+    	mainEngine sol_pb = new mainEngine();
+    	
+    	System.out.println(sol_pb.mainEngine(pb1)+"\n"+"\n");
+    	System.out.println(sol_pb.mainEngine(pb2)+"\n"+"\n");
+    	System.out.println(sol_pb.mainEngine(pb3)+"\n"+"\n");    	
+    	
 		Scanner sc = new Scanner(System.in);
 
 	    //Initialisation des variables

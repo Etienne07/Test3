@@ -1,8 +1,11 @@
 package jeux_des_nombresV2;
 
-import java.util.Scanner;
-
 public class mainEngine {
+	
+	public mainEngine ()
+	{
+		
+	}
 		
 	public static String  mainEngine(String[] probleme)
 	{
@@ -140,7 +143,7 @@ public class mainEngine {
     	{
 			//Saisie du générateur
 			String generateur_pb2_string = new String(); 
-			generateur_pb2_string = probleme[2];
+			generateur_pb2_string = probleme[1];
 			int generateur_pb2 = Integer.parseInt(generateur_pb2_string);
 			
 		    //Saisie du nombre d'opérations
