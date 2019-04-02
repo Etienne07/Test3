@@ -4,6 +4,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JDialog;
 import jeux_des_nombresV2.mainClasseV2;
 
 
@@ -38,6 +39,11 @@ import jeux_des_nombresV2.mainClasseV2;
 		setResizable(false);
 		setContentPane(fenetre);
 		fenetre.setLayout(null);
+		
+		
+		
+		
+		
 		texteNbGen.setColumns(10);
 		texteNbGen.setSize(30, 15);
 		texteNbGen.setBounds(300, 210, 150, 50);
@@ -50,10 +56,13 @@ import jeux_des_nombresV2.mainClasseV2;
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		
-		if(source == OK) {
-			generateur = texteNbGen.getText();
-			etat = 1;
-			this.dispose();
+		synchronized(this) {
+			if(source == OK) {
+				generateur = texteNbGen.getText();
+				etat = 1;
+				notifyAll();
+				this.dispose();
+		}			
 		}
 	
 	}

@@ -1,6 +1,8 @@
 package interfaceGraphique;
 import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import jeux_des_nombresV2.mainClasseV2;
@@ -8,7 +10,7 @@ import java.lang.Thread;
 
 
  public class mainBox extends JFrame implements ActionListener {
-	 
+
 	private panneau fenetre = new panneau();
 	private JButton pbm1 = new JButton("Problème 1");
 	private JButton pbm2 = new JButton("Problème 2");
@@ -18,6 +20,17 @@ import java.lang.Thread;
 	public mainBox() {
 		super();
 		build();
+		
+		synchronized(this) {
+			if(entree != "NA") {
+				notify();
+				System.out.println("notify"+entree);
+			}
+		}
+	}
+	
+	public String getString() {
+		return entree;
 	}
 	
 	private void build() 
@@ -45,15 +58,19 @@ import java.lang.Thread;
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		
+//		Pbm1Box fenetre1 = new Pbm1Box();
+//		fenetre1.setVisible(true);
 		
 		if(source == pbm1) {
-			Pbm1Box fenetre1 = new Pbm1Box();
-			fenetre1.setVisible(true);
-//			while(fenetre1.getState() == 0) {}
-			entree = fenetre1.getString();
-			System.out.println(entree);
+				
+				entree = (String)JOptionPane.showInputDialog("Générateur", null);			
+					
+				}			
 		}
+				
+
 		
+	/*
 		else if(source == pbm2){
 			Pbm2Box fenetre2 = new Pbm2Box();
 			fenetre2.setVisible(true);
@@ -62,7 +79,9 @@ import java.lang.Thread;
 			Pbm3Box fenetre3 = new Pbm3Box();
 			fenetre3.setVisible(true);
 		}
-	}
+		
+		*/
+		
+}
 	
 	
- }
