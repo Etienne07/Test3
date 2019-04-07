@@ -14,11 +14,12 @@ import java.util.ArrayList;
  public class mainBox {
 
 	 private static String[] liste;
-	 private static String indicateur = new String("NA");
-	 private String output;
+	 private static String indicateur;
+	 private static String output;
 	 
 	public static void main(String[] args) throws InterruptedException {
 		System.out.println(liste);
+		indicateur = "NA";
 		System.out.println("entree"+indicateur);
 		pan panneau = new mainBox().new pan();	
 		panneau.build();
@@ -32,11 +33,13 @@ import java.util.ArrayList;
 		
 		indicateur = "NA";
 
-		jeux_des_nombresV2.mainEngine moteur = new jeux_des_nombresV2.mainEngine(liste);
+		jeux_des_nombresV2.mainEngine moteur = new jeux_des_nombresV2.mainEngine();
 		
-		ResultatBox pan_resultat = new ResultatBox(moteur);
+		output = moteur(liste);
+		
+		ResultatBox pan_resultat = new ResultatBox(output);
 		pan_resultat.setVisible(true);
-		
+	
 
 		
 			
@@ -103,7 +106,6 @@ import java.util.ArrayList;
 			Object source = e.getSource();
 			
 			if(source == pbm1) {	
-				System.out.println(textePbm1.getText());
 				indicateur = "OK";
 				liste = new String[2];
 				liste[1] = (textePbm1.getText());

@@ -2,8 +2,8 @@ package interfaceGraphique;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import jeux_des_nombresV2.mainClasseV2;
-import java.awt.Graphics;
+import java.awt.FlowLayout;
+import java.awt.Font;
 
 
 public class ResultatBox extends JFrame {
@@ -15,26 +15,23 @@ public class ResultatBox extends JFrame {
 		build();
 	}
 	
-//	private panneauResultat fenetre = new panneauResultat(str);
-	private JPanel panneau = new JPanel();
-	private JLabel resultat = new JLabel(str);
-	
 	private void build() {
 		setTitle("Résultats");
 		setSize(920,450);
 		setLocationRelativeTo(null);
 		setResizable(true);
+		setContentPane(buildContentPane());
 		
-//		FlowLayout ctr = new FlowLayout(FlowLayout.CENTER);
-//		panneau.setLayout(ctr);
+	}
+	
+	private JPanel buildContentPane() {
+		JPanel panneau = new JPanel();
+		JLabel resultat = new JLabel(str);
+		Font font = new Font("Arial", Font.BOLD, 16);
+		
+		resultat.setFont(font);
+		panneau.setLayout(new FlowLayout());	
 		panneau.add(resultat);
-		
-		setContentPane(panneau);
-		panneau.setLayout(null);
-
-		
-//		setContentPane(fenetre);
-//		fenetre.setLayout(null);
-		
+		return panneau;
 	}
 }
