@@ -1,14 +1,13 @@
 package interfaceGraphique;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
 import java.awt.FlowLayout;
-import java.awt.Font;
 
 
 public class ResultatBox extends JFrame {
 	 
 	private String[] str;
+	
 	
 	public ResultatBox(String[] resultat) {
 		str = resultat;
@@ -31,4 +30,5 @@ public class ResultatBox extends JFrame {
 		panneauR.setLayout(new FlowLayout());	
 		return panneauR;
 	}
+	
 }

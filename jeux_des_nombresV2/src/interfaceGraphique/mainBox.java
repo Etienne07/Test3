@@ -14,16 +14,15 @@ import java.lang.Thread;
 	 private static String output;
 	 
 	public static void main(String[] args) throws InterruptedException {
+		run();
+		}
+	
+	
+	public static void run() throws InterruptedException {
 		indicateur = "NA";
 		pan panneau = new mainBox().new pan();	
 		panneau.build();
-		panneau.setVisible(true);
-		run();
-
-		}
-		
-	public static void run() throws InterruptedException {
-		
+		panneau.setVisible(true);		
 		while(indicateur == "NA") {
 			Thread.sleep(1000);
 		}
@@ -38,6 +37,9 @@ import java.lang.Thread;
 		
 		ResultatBox pan_resultat = new ResultatBox(solution_liste);
 		pan_resultat.setVisible(true);
+		
+		panneau.setVisible(false);
+		panneau.dispose();
 	
 
 	}

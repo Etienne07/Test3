@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 public class panneauResultat extends JPanel {
 	
 	private String[] str;
-	private String[] transition;
 	private String st = new String();
 	private int i;
 	private int j;
@@ -18,7 +17,7 @@ public class panneauResultat extends JPanel {
 	}
 
   public void paintComponent(Graphics g){
-
+	  
 	l = str.length;
 	j = 0;
 	Font font2 = new Font("Arial", Font.BOLD, 16);
