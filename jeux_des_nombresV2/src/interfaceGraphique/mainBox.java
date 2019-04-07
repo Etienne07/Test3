@@ -14,9 +14,7 @@ import java.lang.Thread;
 	 private static String output;
 	 
 	public static void main(String[] args) throws InterruptedException {
-		System.out.println(liste);
 		indicateur = "NA";
-		System.out.println("entree"+indicateur);
 		pan panneau = new mainBox().new pan();	
 		panneau.build();
 		panneau.setVisible(true);
@@ -30,8 +28,6 @@ import java.lang.Thread;
 			Thread.sleep(1000);
 		}
 		
-		System.out.println("sortie"+indicateur);
-		
 		indicateur = "NA";
 		
 		mainEngine moteur = new mainEngine();
@@ -40,7 +36,7 @@ import java.lang.Thread;
 		String[] solution_liste = output.split("\n");
 		
 		
-		ResultatBox pan_resultat = new ResultatBox(output);
+		ResultatBox pan_resultat = new ResultatBox(solution_liste);
 		pan_resultat.setVisible(true);
 	
 

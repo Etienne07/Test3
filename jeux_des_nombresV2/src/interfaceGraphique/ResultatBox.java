@@ -8,16 +8,16 @@ import java.awt.Font;
 
 public class ResultatBox extends JFrame {
 	 
-	private String str = new String();
+	private String[] str;
 	
-	public ResultatBox(String resultat) {
+	public ResultatBox(String[] resultat) {
 		str = resultat;
 		build();
 	}
 	
 	private void build() {
 		setTitle("Résultats");
-		setSize(920,450);
+		setSize(920,950);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setContentPane(buildContentPane());
@@ -25,13 +25,10 @@ public class ResultatBox extends JFrame {
 	}
 	
 	private JPanel buildContentPane() {
-		JPanel panneau = new JPanel();
-		JLabel resultat = new JLabel(str);
-		Font font = new Font("Arial", Font.BOLD, 16);
+		panneauResultat panneauR = new panneauResultat();
+		panneauR.panneauResultat(str);
 		
-		resultat.setFont(font);
-		panneau.setLayout(new FlowLayout());	
-		panneau.add(resultat);
-		return panneau;
+		panneauR.setLayout(new FlowLayout());	
+		return panneauR;
 	}
 }
