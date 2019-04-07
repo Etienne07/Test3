@@ -1,5 +1,4 @@
 package interfaceGraphique;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Font;
 import javax.swing.JPanel;
@@ -18,7 +17,13 @@ public class panneau extends JPanel {
     g.drawString("élémentaires simples sur le générateur (avec un nombre fixe d'opérations)", 10, 182);
     g.drawString("Problème 3 : à partir de plusieurs générateurs, trouver un nombre cible avec un minimum d'opérations élémentaires",10,222);
     g.drawString("et en utilisant une seule fois chaque opérateur", 10, 242);
-    
+    g.drawString("Problème 1 / rentrer le générateur : ", 10, 300);
+    g.drawString("Problème 2 / rentrer le générateur :", 310, 300);
+    g.drawString("Problème 2 / rentrer le nombre ", 310, 430);
+    g.drawString("d'opérations :", 310, 450);
+    g.drawString("Problème 3 / rentrer le nombre cible :", 610, 300);
+    g.drawString("Problème 3 / rentrer les générateurs ", 610, 430);
+    g.drawString("séparés par une virgule (ex : 1,4,5,19)", 610, 450);
    
   }        
 

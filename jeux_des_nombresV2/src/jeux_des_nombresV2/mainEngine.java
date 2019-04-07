@@ -2,10 +2,6 @@ package jeux_des_nombresV2;
 
 public class mainEngine {
 	
-	public mainEngine ()
-	{
-		
-	}
 		
 	public static String  mainEngine(String[] probleme)
 	{
