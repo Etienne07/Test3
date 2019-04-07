@@ -4,6 +4,9 @@ import javax.swing.JDialog;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import jeux_des_nombresV2.mainEngine;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.Thread;
@@ -32,21 +35,21 @@ import java.util.ArrayList;
 		System.out.println("sortie"+indicateur);
 		
 		indicateur = "NA";
-
-		jeux_des_nombresV2.mainEngine moteur = new jeux_des_nombresV2.mainEngine();
 		
-		output = moteur(liste);
+		mainEngine moteur = new mainEngine();
+		output = moteur.mainEngine(liste);
+		
+		String[] solution_liste = output.split("\n");
+		
+
+		
 		
 		ResultatBox pan_resultat = new ResultatBox(output);
 		pan_resultat.setVisible(true);
 	
 
-		
-			
 		}
 		
-		
-	
 	
 	class pan extends JFrame implements ActionListener{
 
@@ -122,9 +125,15 @@ import java.util.ArrayList;
 				
 			else if(source == pbm3) {
 				indicateur = "OK";
-				liste = new String[3];
+				String generateurs = new String();
+				generateurs = texte2Pbm3.getText();
+				String[] parts = generateurs.split(",");
+				liste = new String[2+parts.length];
 				liste[1] = (texte1Pbm3.getText());
-				liste[2] = (texte2Pbm3.getText());
+				for(int i=0; i<parts.length;i++)
+				{
+					liste[i+2]=parts[i];
+				}
 				liste[0] = "3";
 			}
 			}	
