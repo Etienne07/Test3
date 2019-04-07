@@ -1,18 +1,11 @@
 package interfaceGraphique;
 import javax.swing.JFrame;
-import javax.swing.JDialog;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import jeux_des_nombresV2.mainEngine;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.Thread;
-import java.util.List;
-import java.util.ArrayList;
-
 
  public class mainBox {
 
@@ -27,6 +20,11 @@ import java.util.ArrayList;
 		pan panneau = new mainBox().new pan();	
 		panneau.build();
 		panneau.setVisible(true);
+		run();
+
+		}
+		
+	public static void run() throws InterruptedException {
 		
 		while(indicateur == "NA") {
 			Thread.sleep(1000);
@@ -41,15 +39,12 @@ import java.util.ArrayList;
 		
 		String[] solution_liste = output.split("\n");
 		
-
-		
 		
 		ResultatBox pan_resultat = new ResultatBox(output);
 		pan_resultat.setVisible(true);
 	
 
-		}
-		
+	}
 	
 	class pan extends JFrame implements ActionListener{
 
