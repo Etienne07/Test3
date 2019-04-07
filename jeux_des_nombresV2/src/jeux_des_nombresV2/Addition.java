@@ -7,7 +7,6 @@ public class Addition extends Arbre
 	protected Arbre arbre1 = new Arbre();
 	protected Arbre arbre2 = new Arbre();
 				
-	//test
 	public Addition ()
 	{
 		super();

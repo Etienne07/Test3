@@ -20,10 +20,4 @@ public class Nombre extends Arbre
 	    solution = String.valueOf(this.valeur);
 		return(solution);
     } 
-	
-	public String toString()
-	{
-		String str = "" + this.valeur;
-		return str;
-	}
 }

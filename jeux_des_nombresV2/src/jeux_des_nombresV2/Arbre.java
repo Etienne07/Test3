@@ -23,12 +23,6 @@ public class Arbre
 	{
 		return(this.lire_solution());
 	}
-
-	public String toString()
-	{
-		String str = "\n Arbre non conforme \n";
-		return str;
-	}
 	
 	//Méthode renvoyant 'true' si les 2 arbres n'ont pas de générateurs en commun
 	public boolean compare_generateurs(Arbre arbre)
